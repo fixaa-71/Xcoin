@@ -1,0 +1,8232 @@
+
+X COIN — COMPLETE PRODUCTION MASTER PROMPT
+
+Build the entire X COIN Telegram Mini App from scratch as a real production-ready application.
+
+IMPORTANT:
+THIS TELEGRAM MINI APP FOR GITHUB TO VERCEL DEPLOYEDABLE SO MAKE THIS FOR THIS ALL ENVIRONMENT AND variable NEEDED
+Do NOT create a toy/demo app.
+
+Do NOT use fake users.
+
+Do NOT use fake balances.
+
+Do NOT use fake trading statistics.
+
+Do NOT hardcode fake leaderboard data.
+
+Do NOT simulate Firebase data.
+
+Every important feature must be connected to the real backend/database.
+
+The UI must look like a premium modern fintech/trading application.
+
+The application must be mobile-first and optimized for Telegram WebApp.
+
+The code must be clean, modular, secure and production-oriented.
+
+Do not leave important features as placeholder buttons.
+
+If a feature cannot safely be implemented client-side, implement it server-side.
+
+Never trust client-provided balances, rewards, Telegram identity, permissions or trading results.
+
+
+
+---
+
+1. BRAND IDENTITY
+
+Application name:
+
+X COIN
+
+Main coin logo:
+
+https://i.ibb.co.com/9mnXfgXr/images-2.jpg
+
+Use this logo consistently throughout the application:
+
+Header
+
+Balance cards
+
+Wallet
+
+Tap screen
+
+Trading screen
+
+Transaction history
+
+Leaderboards
+
+VIP section
+
+Referral section
+
+Withdraw page
+
+Admin dashboard
+
+Notifications
+
+Loading states
+
+Empty states
+
+
+Create a reusable CoinIcon component so the logo is not duplicated throughout the code.
+
+Example:
+
+<img
+src="https://i.ibb.co.com/9mnXfgXr/images-2.jpg"
+alt="X COIN"
+/>
+
+Do not download or replace the logo with another random icon.
+
+
+---
+
+2. VISUAL DESIGN
+
+Create a premium dark fintech UI.
+
+Design language:
+
+Deep obsidian background
+
+Black / charcoal surfaces
+
+Champagne-gold highlights
+
+Glassmorphism
+
+Metallic borders
+
+Soft shadows
+
+Subtle gradients
+
+Premium spacing
+
+Rounded modern cards
+
+Smooth micro animations
+
+Professional typography
+
+Minimal visual noise
+
+
+The application should feel closer to a premium financial/trading product than a simple crypto game.
+
+Avoid:
+
+childish UI
+
+excessive emojis
+
+cartoon graphics
+
+cheap gradients
+
+fake crypto exchange branding
+
+unnecessary animations
+
+cluttered screens
+
+
+Use responsive design for:
+
+Telegram Android
+
+Telegram iOS
+
+mobile browser
+
+desktop Telegram
+
+
+
+---
+
+3. TECHNOLOGY
+
+Use:
+
+Next.js
+
+React
+
+TypeScript
+
+Tailwind CSS
+
+Lucide React
+
+Framer Motion where useful
+
+Firebase
+
+Firestore
+
+Firebase Authentication where appropriate
+
+Telegram WebApp API
+
+secure server-side API routes
+
+server-side validation
+
+transactions for financial state changes
+
+
+Keep components modular.
+
+Suggested structure:
+
+app/ components/ lib/ services/ hooks/ types/ server/ api/ admin/ config/
+
+Do not place all logic in one giant component.
+
+
+---
+
+4. FIREBASE CONFIGURATION
+
+Use the following Firebase project:
+
+const firebaseConfig = {
+  apiKey: "AIzaSyBVY4CPyFZHPz28326R42gDl4cu9d1nn0g",
+  authDomain: "x-coin-71398.firebaseapp.com",
+  projectId: "x-coin-71398",
+  storageBucket: "x-coin-71398.firebasestorage.app",
+  messagingSenderId: "198674045130",
+  appId: "1:198674045130:web:3c2e8bd3c25f8e1ed77c33",
+  measurementId: "G-LH0ZWY7FH2"
+};
+
+Never expose sensitive server credentials.
+
+Never place a Telegram Bot Token in client-side JavaScript.
+
+Use environment variables for secrets.
+
+
+---
+
+5. TELEGRAM MINI APP
+
+The application must work as a Telegram Mini App.
+
+Support:
+
+Telegram Main Mini App
+
+Telegram Menu Button
+
+Telegram WebApp
+
+Telegram user profile
+
+Telegram user ID
+
+first name
+
+last name
+
+username
+
+profile photo when available
+
+language
+
+start parameter/referral parameter
+
+
+IMPORTANT SECURITY:
+
+Never trust:
+
+Telegram.WebApp.initDataUnsafe
+
+as authoritative identity.
+
+Send:
+
+Telegram.WebApp.initData
+
+to the backend and validate the Telegram WebApp initialization data server-side using the official Telegram validation procedure.
+
+Only after successful validation should the backend create/read the user.
+
+
+---
+
+6. REAL USER SYSTEM
+
+Only count a person as a user after they actually open the X COIN Telegram Mini App.
+
+Do NOT:
+
+generate fake users
+
+seed fake accounts
+
+count random Telegram IDs
+
+create dummy leaderboard users
+
+generate fake trading activity
+
+
+On first verified Mini App launch:
+
+Create a real Firestore user document.
+
+Suggested:
+
+users/{telegramUserId}
+
+Fields:
+
+telegramUserId
+
+firstName
+
+lastName
+
+username
+
+photoUrl
+
+languageCode
+
+createdAt
+
+lastSeenAt
+
+status
+
+vipTier
+
+referralCode
+
+referredBy
+
+totalEarned
+
+totalTradingVolume
+
+totalTrades
+
+wins
+
+losses
+
+winRate
+
+tapPower
+
+rechargePower
+
+energy
+
+energyCapacity
+
+lastEnergyUpdate
+
+createdFrom
+
+updatedAt
+
+
+Never allow the client to directly assign financial values.
+
+
+---
+
+7. MAIN APP NAVIGATION
+
+Create these sections:
+
+1. Tap
+
+
+2. Upgrades
+
+
+3. Promote
+
+
+4. Bonus
+
+
+5. Friends
+
+
+6. Top
+
+
+7. Trading Arena
+
+
+8. Wallet
+
+
+
+Use a premium bottom navigation.
+
+The active tab should have a subtle gold glow.
+
+
+---
+
+8. TAP SYSTEM
+
+Create a premium X COIN mining/tapping interface.
+
+Display:
+
+X COIN balance
+
+large coin logo
+
+Tap Power
+
+Energy
+
+Energy Capacity
+
+Recharge Power
+
+current level
+
+
+Example:
+
+Tap Power: +5 XCOIN
+
+Every valid tap must be processed exactly once.
+
+CRITICAL:
+
+One physical tap = one logical tap.
+
+Do NOT attach:
+
+onClick
+
+onTouchStart
+
+onTouchEnd
+
+onPointerDown
+
+
+to the same action simultaneously.
+
+Use one consistent pointer event architecture, preferably:
+
+onPointerDown
+
+Prevent duplicate event listeners.
+
+Do not use an aggressive debounce that prevents legitimate rapid tapping.
+
+
+---
+
+9. TAP SECURITY
+
+The client must never decide:
+
+reward amount
+
+final balance
+
+energy amount
+
+Tap Power
+
+server timestamp
+
+
+Create a unique:
+
+tapBatchId
+
+The backend must make tap processing idempotent.
+
+If the same tapBatchId is submitted twice:
+
+process it only once.
+
+Use Firestore transaction / atomic server-side operation.
+
+Server response should include:
+
+acceptedTaps
+
+rejectedTaps
+
+tapReward
+
+authoritativeBalance
+
+remainingEnergy
+
+serverSequence
+
+
+Use:
+
+authoritativeServerBalance + pendingLocalReward
+
+for smooth UI rendering.
+
+Do not allow an old Firestore snapshot to overwrite a newer confirmed state.
+
+
+---
+
+10. ENERGY SYSTEM
+
+Energy must recharge over time.
+
+Configurable by admin:
+
+energyCapacity
+
+rechargeRate
+
+maxEnergy
+
+tapEnergyCost
+
+
+The server is authoritative.
+
+Never allow the client to generate unlimited energy.
+
+
+---
+
+11. UPGRADES
+
+Create:
+
+Tap Power
+
+Admin configurable:
+
+price
+
+reward
+
+level
+
+maxLevel
+
+enabled
+
+
+Recharge Power
+
+Admin configurable:
+
+price
+
+rechargeRate
+
+maxLevel
+
+enabled
+
+
+Capacity
+
+Admin configurable:
+
+price
+
+capacity
+
+maxLevel
+
+enabled
+
+
+Every purchase must use a Firestore transaction.
+
+Prevent:
+
+duplicate purchase
+
+negative balance
+
+race-condition purchases
+
+client-side price manipulation
+
+
+
+---
+
+12. BONUS SYSTEM
+
+Create:
+
+Daily 7-Day Check-In
+
+Admin configurable reward for each day.
+
+Prevent duplicate claim.
+
+Track:
+
+currentDay
+
+streak
+
+lastClaimAt
+
+claimedDays
+
+
+Create optional rewarded ads.
+
+Ads reward must be server validated.
+
+Never trust the client to say:
+
+"I watched an ad."
+
+
+---
+
+13. ADSGRAM
+
+Create an admin-controlled Ads configuration.
+
+Fields:
+
+enabled
+
+blockId
+
+rewardAmount
+
+dailyLimit
+
+cooldown
+
+enabledForVIP
+
+enabledForNormalUsers
+
+
+Never hardcode production block IDs.
+
+Admin must be able to configure them.
+
+
+---
+
+14. REFERRAL SYSTEM
+
+Every real user receives a referral code.
+
+Track:
+
+referrerTelegramId
+
+referredTelegramId
+
+createdAt
+
+reward
+
+status
+
+
+Prevent:
+
+self referral
+
+duplicate referral
+
+referral replay
+
+fake referral creation
+
+client-side reward manipulation
+
+
+Only valid referrals count toward Top Referrers.
+
+
+---
+
+15. FRIENDS
+
+Display:
+
+referral link
+
+total referrals
+
+successful referrals
+
+referral earnings
+
+pending referrals if applicable
+
+
+Only real Telegram Mini App users count.
+
+
+---
+
+16. TOP LEADERBOARD
+
+Create a premium Top page with:
+
+Top Traders
+
+Show:
+
+Rank
+
+profile photo
+
+first name
+
+username if available
+
+trading volume
+
+total trades
+
+wins
+
+losses
+
+win rate
+
+
+Win rate:
+
+wins / completed settled trades × 100
+
+Exclude:
+
+pending
+
+rejected
+
+cancelled
+
+unsettled trades
+
+
+
+---
+
+17. TOP REFERRERS
+
+Show:
+
+rank
+
+profile
+
+successful referrals
+
+referral rewards
+
+
+Only successful verified referrals count.
+
+
+---
+
+18. TOP EARNERS
+
+Create a separate leaderboard.
+
+Show users ranked by real earned XCOIN.
+
+Earned XCOIN may include valid:
+
+tap rewards
+
+bonus rewards
+
+referral rewards
+
+promotion rewards
+
+other valid platform rewards
+
+
+Do NOT count:
+
+deposits
+
+transfers
+
+temporary balances
+
+pending rewards
+
+rejected rewards
+
+
+If there are no real users:
+
+show:
+
+"No users yet"
+
+Do not generate placeholder users.
+
+
+---
+
+19. TRADING ARENA
+
+Create a professional trading interface.
+
+Asset:
+
+XC
+
+XC is trading-only.
+
+XC cannot directly be withdrawn.
+
+Example conversion:
+
+1 XC = 5 XCOIN
+
+Conversion rate must be admin configurable.
+
+
+---
+
+20. TRADING OPTIONS
+
+Expiry:
+
+5 seconds
+
+10 seconds
+
+30 seconds
+
+1 minute
+
+2 minutes
+
+5 minutes
+
+
+Direction:
+
+UP
+
+DOWN
+
+
+Admin configurable:
+
+minimum trade
+
+maximum trade
+
+available expiries
+
+trading fee
+
+market status
+
+
+Example:
+
+Minimum:
+
+100 XC
+
+Maximum:
+
+100,000 XC
+
+Do not hardcode these values permanently.
+
+
+---
+
+21. TRADING SETTLEMENT
+
+The backend must be authoritative.
+
+Never let the browser decide the result.
+
+Never manipulate outcomes based on:
+
+VIP level
+
+bet amount
+
+majority side
+
+user's previous wins
+
+user's previous losses
+
+user's balance
+
+user identity
+
+
+Do not secretly reduce winning probability.
+
+Do not secretly increase winning probability.
+
+Every trade must use the same transparent settlement rules.
+
+
+---
+
+22. TRADE RECORD
+
+Create:
+
+trades/{tradeId}
+
+Fields:
+
+tradeId
+
+telegramUserId
+
+amountXC
+
+direction
+
+expiry
+
+openedAt
+
+expiresAt
+
+entrySnapshot
+
+settlementSnapshot
+
+outcome
+
+result
+
+payout
+
+fee
+
+status
+
+serverSequence
+
+createdAt
+
+settledAt
+
+
+Statuses:
+
+OPEN
+
+SETTLED
+
+CANCELLED
+
+REJECTED
+
+
+---
+
+23. TRADING MARKET STATS
+
+Create real-time/near-real-time statistics:
+
+total traders
+
+active trades
+
+completed trades
+
+total trading volume
+
+UP volume
+
+DOWN volume
+
+trading fees
+
+winning trades
+
+losing trades
+
+market activity
+
+
+Never show fake statistics.
+
+
+---
+
+24. TRADER PROFILE
+
+When a user opens a trader profile, show:
+
+total trading volume
+
+total trades
+
+wins
+
+losses
+
+win rate
+
+average trade
+
+largest trade
+
+current streak
+
+best streak
+
+
+Calculate from real settled trades.
+
+
+---
+
+25. XC → XCOIN CONVERSION
+
+Create conversion page.
+
+Example:
+
+1 XC = 5 XCOIN
+
+But make the rate admin configurable.
+
+Conversion must be server-side.
+
+Use Firestore transaction.
+
+Prevent:
+
+duplicate conversion
+
+negative XC
+
+double spending
+
+race conditions
+
+
+
+---
+
+26. MAIN WALLET
+
+Wallet must show:
+
+XCOIN balance
+
+XC trading balance
+
+total earned
+
+available withdrawal
+
+pending withdrawal
+
+transaction history
+
+
+Transaction types:
+
+TAP_REWARD
+
+BONUS
+
+REFERRAL
+
+UPGRADE
+
+CONVERSION
+
+TRADE_ENTRY
+
+TRADE_WIN
+
+TRADE_LOSS
+
+TRADING_FEE
+
+WITHDRAWAL
+
+WITHDRAWAL_FEE
+
+VIP_PAYMENT
+
+PROMOTION
+
+AD_REWARD
+
+ADMIN_ADJUSTMENT
+
+
+
+---
+
+27. WITHDRAWAL
+
+Withdrawal asset:
+
+XCOIN
+
+Supported destination types:
+
+USDT
+
+TON
+
+
+Withdrawal statuses:
+
+PENDING
+
+UNDER_REVIEW
+
+APPROVED
+
+PROCESSING
+
+COMPLETED
+
+REJECTED
+
+CANCELLED
+
+Separate:
+
+withdrawal amount
+
+platform fee
+
+network fee
+
+net amount
+
+
+Never allow client to mark withdrawal as completed.
+
+
+---
+
+28. VIP SYSTEM
+
+Create VIP plans:
+
+Standard — $1
+
+Premium — $3
+
+Pro — $5
+
+Elite — $10
+
+Master — $25
+
+Diamond — $50
+
+Legend — $100
+
+Admin can change:
+
+price
+
+name
+
+benefits
+
+limits
+
+enabled status
+
+AI access
+
+analytics access
+
+prediction history
+
+daily prediction limit
+
+
+Do not guarantee profit.
+
+VIP should unlock platform features and analytics, not manipulate trade outcomes.
+
+
+---
+
+29. VIP PAYMENT
+
+VIP payment is external/manual verification.
+
+Admin configures:
+
+payment asset
+
+network
+
+wallet address
+
+QR code
+
+instructions
+
+minimum amount
+
+
+User flow:
+
+1. Select VIP.
+
+
+2. View payment amount.
+
+
+3. View wallet address.
+
+
+4. View QR.
+
+
+5. Send crypto externally.
+
+
+6. Submit TXID.
+
+
+7. Create payment order.
+
+
+8. Admin reviews.
+
+
+9. Admin approves/rejects.
+
+
+10. VIP activates only once.
+
+
+
+Payment statuses:
+
+PENDING
+
+UNDER_REVIEW
+
+APPROVED
+
+REJECTED
+
+EXPIRED
+
+CANCELLED
+
+Prevent:
+
+duplicate TXID
+
+duplicate activation
+
+wrong network
+
+wrong destination
+
+wrong amount
+
+replay
+
+expired order
+
+
+
+---
+
+30. AI MARKET PREDICTION
+
+VIP users can access an AI Market Prediction / Analytics feature.
+
+IMPORTANT:
+
+AI predictions are informational analytics only.
+
+They must NEVER control actual trade settlement.
+
+Never create secret logic where:
+
+larger bets get worse results
+
+VIP users get manipulated results
+
+non-VIP users get manipulated results
+
+majority side determines outcome
+
+user's previous results determine outcome
+
+
+Prediction data should be based on actual available market/trading data.
+
+Prediction record:
+
+predictionId
+
+createdAt
+
+marketSnapshot
+
+expiry
+
+prediction
+
+confidence
+
+actualOutcome
+
+correct
+
+modelVersion
+
+vipTierAtPrediction
+
+
+Possible AI output:
+
+UP / DOWN
+
+confidence
+
+momentum
+
+recent movement
+
+volume
+
+volatility
+
+trend
+
+expiry context
+
+
+Do not claim guaranteed accuracy.
+
+
+---
+
+31. AI ACCURACY
+
+Calculate real historical accuracy.
+
+Example:
+
+Correct predictions / settled predictions × 100
+
+Show:
+
+total predictions
+
+correct
+
+incorrect
+
+accuracy
+
+accuracy by expiry
+
+accuracy by market condition
+
+accuracy by model version
+
+
+Never fabricate:
+
+"AI is 80% accurate"
+
+unless real historical data supports it.
+
+
+---
+
+32. PROMOTE
+
+Create Promotion marketplace.
+
+Example:
+
+Minimum:
+
+20,000 XCOIN
+
+Admin configurable.
+
+Fields:
+
+promotionId
+
+ownerTelegramId
+
+targetMembers
+
+price
+
+duration
+
+status
+
+createdAt
+
+expiresAt
+
+
+Statuses:
+
+PENDING
+
+ACTIVE
+
+COMPLETED
+
+CANCELLED
+
+EXPIRED
+
+
+---
+
+33. REVENUE LEDGER
+
+Create a separate revenue ledger.
+
+Revenue categories:
+
+trading fees
+
+conversion fees
+
+withdrawal fees
+
+VIP revenue
+
+promotion revenue
+
+Ads revenue
+
+other revenue
+
+
+Do NOT automatically classify every trader loss as platform revenue.
+
+Keep:
+
+user liabilities
+
+pending withdrawals
+
+treasury
+
+house/counterparty P&L
+
+platform revenue
+
+separate.
+
+
+---
+
+34. HOUSE P&L
+
+Track separately:
+
+realizedProfit
+
+realizedLoss
+
+hedgingCost
+
+netHousePnL
+
+
+Do not mix house P&L with user deposits or platform revenue.
+
+
+---
+
+35. ADMIN SYSTEM
+
+Main Owner Telegram ID:
+
+8522783212
+
+Store as immutable server configuration.
+
+The client must never be able to modify the Owner ID.
+
+Owner has full control.
+
+
+---
+
+36. ADMIN LOGIN
+
+Create:
+
+X COIN ADMIN
+
+Admin login requires:
+
+Admin Key
+
+secure server-side validation
+
+
+Owner authentication should additionally require verified Telegram identity.
+
+Never store plaintext admin keys.
+
+Store:
+
+hash
+
+Only display a newly generated key once.
+
+
+---
+
+37. ADMIN KEYS
+
+Owner can create:
+
+Admin Key
+
+name
+
+description
+
+role
+
+permissions
+
+expiration
+
+status
+
+
+Statuses:
+
+ACTIVE
+
+DISABLED
+
+REVOKED
+
+EXPIRED
+
+When revoked:
+
+all associated sessions become invalid.
+
+
+---
+
+38. RBAC PERMISSIONS
+
+Permissions:
+
+users.view
+
+users.edit
+
+users.freeze
+
+wallet.view
+
+wallet.adjust
+
+trading.view
+
+trading.configure
+
+trading.pause
+
+trading.analytics
+
+payments.view
+
+payments.review
+
+payments.approve
+
+payments.reject
+
+payments.configure
+
+vip.view
+
+vip.configure
+
+upgrades.view
+
+upgrades.configure
+
+withdrawals.view
+
+withdrawals.review
+
+withdrawals.approve
+
+withdrawals.reject
+
+treasury.view
+
+treasury.manage
+
+treasury.export
+
+promotions.view
+
+promotions.configure
+
+referrals.view
+
+referrals.configure
+
+rewards.view
+
+rewards.configure
+
+ads.view
+
+ads.configure
+
+telegram.view
+
+telegram.configure
+
+security.view
+
+security.manage
+
+audit.view
+
+audit.export
+
+system.view
+
+system.configure
+
+emergency.use
+
+
+---
+
+39. OWNER-ONLY PERMISSIONS
+
+owner.manage
+
+owner.security
+
+owner.createAdmin
+
+owner.deleteAdmin
+
+owner.changeAdminPermissions
+
+owner.resetAdminSecurity
+
+owner.changeOwnerCredentials
+
+owner.changeOwnerIdentity
+
+owner.grantSensitivePermission
+
+owner.revokeSensitivePermission
+
+owner.emergencyGlobalControl
+
+A normal admin must NEVER be able to grant itself these permissions.
+
+
+---
+
+40. ADMIN DASHBOARD
+
+Create premium Admin Dashboard.
+
+Sections:
+
+Overview
+
+Users
+
+Wallets
+
+Transactions
+
+Trading
+
+Market Analytics
+
+VIP
+
+Payments
+
+Withdrawals
+
+Promotions
+
+Referrals
+
+Bonuses
+
+Ads
+
+Treasury
+
+Revenue
+
+House P&L
+
+AI Predictions
+
+Admin Keys
+
+Security Center
+
+Audit Logs
+
+System Settings
+
+Emergency Controls
+
+
+
+---
+
+41. ADMIN OVERVIEW
+
+Show only real data:
+
+total real users
+
+active users
+
+total XCOIN
+
+total XC
+
+trading volume
+
+completed trades
+
+trading fees
+
+VIP revenue
+
+promotion revenue
+
+withdrawal volume
+
+pending withdrawals
+
+revenue
+
+house P&L
+
+AI prediction statistics
+
+
+No fake numbers.
+
+
+---
+
+42. SECURITY CENTER
+
+Show:
+
+active admin sessions
+
+login history
+
+failed attempts
+
+revoked keys
+
+expired keys
+
+security events
+
+suspicious activity
+
+force logout
+
+revoke session
+
+
+Add rate limiting.
+
+Add failed login protection.
+
+Add session expiration.
+
+
+---
+
+43. AUDIT LOGS
+
+Create immutable audit logs.
+
+Fields:
+
+adminKeyId
+
+adminTelegramId
+
+role
+
+action
+
+permission
+
+target
+
+oldValue
+
+newValue
+
+timestamp
+
+sessionId
+
+referenceId
+
+IP metadata where legally/technically appropriate
+
+
+Admin actions must be auditable.
+
+
+---
+
+44. EMERGENCY CONTROLS
+
+Owner can globally pause:
+
+trading
+
+withdrawals
+
+VIP
+
+promotions
+
+referrals
+
+bonuses
+
+ads
+
+conversions
+
+
+Show clear status in Admin Dashboard.
+
+
+---
+
+45. FIRESTORE COLLECTIONS
+
+Create architecture for:
+
+users
+
+transactions
+
+wallets
+
+trades
+
+withdrawals
+
+paymentOrders
+
+vipPlans
+
+upgradeConfig
+
+tradingConfig
+
+paymentConfig
+
+platformConfig
+
+revenueLedger
+
+treasury
+
+adminKeys
+
+adminSessions
+
+adminRoles
+
+auditLogs
+
+securityEvents
+
+systemAlerts
+
+featureFlags
+
+predictions
+
+promotions
+
+referrals
+
+bonuses
+
+adRewards
+
+
+---
+
+46. DATABASE RULES
+
+Firestore rules must not rely only on UI restrictions.
+
+Financial writes should be server-controlled.
+
+Prevent users from directly writing:
+
+balance
+
+XC
+
+XCOIN
+
+VIP status
+
+trade result
+
+withdrawal completion
+
+admin role
+
+permissions
+
+revenue
+
+treasury
+
+prediction correctness
+
+
+Use server-side authorization.
+
+
+---
+
+47. TRANSACTIONS
+
+Every financial operation must be atomic.
+
+Examples:
+
+Tap reward:
+
+balance + reward
+
+Energy - cost
+
+Transaction record
+
+Conversion:
+
+XC - amount
+
+XCOIN + convertedAmount
+
+Transaction record
+
+Trade:
+
+XC - stake
+
+Trade record
+
+Settlement:
+
+winning payout / loss
+
+Transaction record
+
+Withdrawal:
+
+balance reservation
+
+withdrawal record
+
+All should prevent double spending.
+
+
+---
+
+48. IDEMPOTENCY
+
+Use idempotency keys for important operations:
+
+taps
+
+purchases
+
+conversions
+
+trades
+
+withdrawals
+
+VIP activation
+
+rewards
+
+referral rewards
+
+ad rewards
+
+
+Repeated request must not create duplicate financial effects.
+
+
+---
+
+49. REAL-TIME UI
+
+Use Firestore listeners carefully.
+
+Never create duplicate listeners.
+
+Clean up listeners on unmount.
+
+For user balance:
+
+Only one authoritative listener per relevant component tree.
+
+Prevent stale snapshots from overwriting newer confirmed state.
+
+Use server sequence/version where needed.
+
+
+---
+
+50. ERROR HANDLING
+
+Create professional error states.
+
+Examples:
+
+"Network unavailable"
+
+"Please try again."
+
+"Transaction already processed."
+
+"Insufficient balance."
+
+"Trading is currently paused."
+
+"Withdrawal is under review."
+
+"Your session has expired."
+
+Never expose sensitive server errors to the user.
+
+
+---
+
+51. LOADING STATES
+
+Use skeleton loaders.
+
+Never display fake values while loading.
+
+Use:
+
+—
+
+or skeleton
+
+instead of:
+
+0
+
+if the actual value has not been loaded yet.
+
+
+---
+
+52. EMPTY STATES
+
+If there are no users:
+
+"No users yet"
+
+If there are no trades:
+
+"No trades yet"
+
+If there are no referrals:
+
+"No referrals yet"
+
+If there are no predictions:
+
+"No predictions yet"
+
+Never insert fake examples.
+
+
+---
+
+53. PROFILE
+
+User profile should show:
+
+Telegram profile image
+
+first name
+
+username
+
+Telegram ID where appropriate
+
+VIP tier
+
+referral code
+
+statistics
+
+earned XCOIN
+
+trading statistics
+
+
+
+---
+
+54. TRANSACTION HISTORY
+
+Show:
+
+type
+
+amount
+
+asset
+
+status
+
+timestamp
+
+reference ID
+
+
+Use real Firestore data.
+
+
+---
+
+55. NOTIFICATIONS
+
+Create in-app notification system.
+
+Types:
+
+reward
+
+trade result
+
+VIP activation
+
+withdrawal update
+
+referral reward
+
+system announcement
+
+security alert
+
+
+
+---
+
+56. TELEGRAM HAPTIC FEEDBACK
+
+For tap:
+
+light impact
+
+
+For successful purchase:
+
+medium impact
+
+
+For important error:
+
+notification/error feedback
+
+
+Use Telegram WebApp haptic APIs when available.
+
+
+---
+
+57. TAP ANIMATION
+
+Tap interaction:
+
+scale:
+
+1 → 0.94 → 1
+
+Add:
+
+ripple
+
+floating +XCOIN
+
+subtle particles
+
+haptic
+
+
+Do not delay actual reward processing for animation.
+
+Animation is visual only.
+
+
+---
+
+58. PERFORMANCE
+
+Optimize for low-end Android devices.
+
+Avoid:
+
+huge bundles
+
+unnecessary re-renders
+
+excessive Firestore listeners
+
+continuous expensive animations
+
+memory leaks
+
+
+Use:
+
+lazy loading
+
+memoization where useful
+
+pagination
+
+indexed Firestore queries
+
+batched reads where appropriate
+
+
+
+---
+
+59. FIRESTORE INDEXES
+
+Create required indexes for:
+
+leaderboard
+
+trades
+
+transactions
+
+referrals
+
+withdrawals
+
+payments
+
+audit logs
+
+predictions
+
+
+
+---
+
+60. SECURITY
+
+Implement:
+
+Telegram initData validation
+
+server-side authorization
+
+RBAC
+
+rate limiting
+
+idempotency
+
+audit logging
+
+session expiry
+
+key hashing
+
+input validation
+
+transaction safety
+
+replay protection
+
+duplicate protection
+
+server timestamps
+
+
+Never trust:
+
+client balance
+
+client role
+
+client VIP status
+
+client prediction result
+
+client trade result
+
+client Telegram identity
+
+
+
+---
+
+61. ENVIRONMENT VARIABLES
+
+Create .env.example.
+
+Example:
+
+GEMINI_API_KEY=
+TELEGRAM_BOT_TOKEN=
+APP_URL=https://x-coin-webapp.ai.studio/
+FIREBASE_PROJECT_ID=x-coin-71398
+
+Never commit real secrets.
+
+Do not expose server secrets through NEXT_PUBLIC_*.
+
+
+---
+
+62. GEMINI AI
+
+If Gemini is used for prediction/analytics:
+
+Use the API server-side.
+
+Never expose:
+
+GEMINI_API_KEY
+
+to the browser.
+
+AI output must be treated as analytics.
+
+The AI must not directly determine the settlement result.
+
+Store model version and prediction record.
+
+
+---
+
+63. ADMIN CONFIGURATION
+
+Owner should be able to configure:
+
+Tap Power
+
+Energy
+
+Recharge
+
+Capacity
+
+XC/XCOIN conversion rate
+
+trading min
+
+trading max
+
+expiries
+
+trading fee
+
+withdrawal fee
+
+VIP plans
+
+VIP payment settings
+
+Adsgram
+
+bonus rewards
+
+referral rewards
+
+promotions
+
+AI prediction settings
+
+maintenance mode
+
+feature flags
+
+
+
+---
+
+64. SYSTEM SETTINGS
+
+Create:
+
+platformConfig/main
+
+with settings such as:
+
+appName
+
+logoUrl
+
+maintenanceMode
+
+tradingEnabled
+
+withdrawalsEnabled
+
+vipEnabled
+
+referralsEnabled
+
+adsEnabled
+
+bonusEnabled
+
+conversionEnabled
+
+
+Only authorized admins can change settings.
+
+Sensitive settings require Owner permission.
+
+
+---
+
+65. WALLET ACCOUNTING
+
+Never calculate financial balance by blindly summing UI events.
+
+Use a reliable accounting model.
+
+Every balance-changing event must have a corresponding ledger/transaction record.
+
+Prevent:
+
+negative balances
+
+duplicate ledger entries
+
+missing references
+
+inconsistent balances
+
+
+
+---
+
+66. WITHDRAWAL SAFETY
+
+When withdrawal is submitted:
+
+1. Validate user.
+
+
+2. Validate balance.
+
+
+3. Validate minimum withdrawal.
+
+
+4. Calculate fee.
+
+
+5. Reserve funds.
+
+
+6. Create withdrawal record.
+
+
+7. Create ledger entry.
+
+
+8. Notify user.
+
+
+9. Admin reviews.
+
+
+
+Never deduct funds twice.
+
+
+---
+
+67. VIP REVENUE
+
+When VIP payment is approved:
+
+Create revenue ledger:
+
+category:
+
+VIP_REVENUE
+
+Store:
+
+paymentOrderId
+
+userId
+
+planId
+
+amount
+
+asset
+
+timestamp
+
+
+Activate VIP exactly once.
+
+
+---
+
+68. ADMIN ADJUSTMENT
+
+If authorized admin adjusts a user's wallet:
+
+Require:
+
+permission
+
+reason
+
+amount
+
+target user
+
+audit record
+
+
+Never silently change balances.
+
+Owner-level wallet adjustments should have stronger audit requirements.
+
+
+---
+
+69. ANTI-ABUSE
+
+Detect suspicious:
+
+referral loops
+
+repeated requests
+
+tap spam
+
+duplicate transactions
+
+duplicate TXIDs
+
+abnormal withdrawal attempts
+
+admin login failures
+
+repeated prediction requests
+
+API abuse
+
+
+Create security events.
+
+Do not automatically punish legitimate users without clear rules.
+
+
+---
+
+70. API DESIGN
+
+Create clean APIs/services:
+
+POST /api/telegram/validate
+
+POST /api/tap
+
+POST /api/upgrade
+
+POST /api/bonus/claim
+
+POST /api/referral/process
+
+POST /api/trade/open
+
+POST /api/trade/settle
+
+POST /api/conversion
+
+POST /api/withdrawal
+
+POST /api/vip/payment-order
+
+POST /api/vip/submit-txid
+
+POST /api/admin/login
+
+POST /api/admin/logout
+
+POST /api/admin/keys
+
+GET /api/admin/dashboard
+
+GET /api/admin/analytics
+
+Use authentication and authorization on every protected endpoint.
+
+
+---
+
+71. ADMIN API SECURITY
+
+Never trust:
+
+role
+
+permissions
+
+adminKeyId
+
+from request body.
+
+Resolve the authenticated admin session server-side.
+
+Then load permissions from trusted database.
+
+
+---
+
+72. USER SESSION
+
+After Telegram validation:
+
+create secure application session.
+
+Do not put sensitive authorization data in localStorage.
+
+Use secure session mechanisms where supported.
+
+
+---
+
+73. RESPONSIVE DESIGN
+
+Make the entire application usable on:
+
+320px width
+
+360px
+
+390px
+
+412px
+
+430px
+
+tablet
+
+desktop
+
+Telegram WebView.
+
+Avoid horizontal overflow.
+
+
+---
+
+74. ACCESSIBILITY
+
+Use:
+
+semantic buttons
+
+accessible labels
+
+sufficient contrast
+
+touch targets
+
+keyboard support where applicable
+
+
+
+---
+
+75. NO FAKE DATA RULE
+
+This rule is extremely important.
+
+Never create:
+
+fake users
+
+fake balances
+
+fake trades
+
+fake leaderboard users
+
+fake trading volume
+
+fake referral counts
+
+fake AI accuracy
+
+fake revenue
+
+fake house P&L
+
+fake withdrawals
+
+fake VIP purchases
+
+fake transaction history
+
+If the database is empty, show a proper empty state.
+
+
+---
+
+76. LEGAL / PRODUCT SAFETY
+
+Do not present X COIN as guaranteed investment.
+
+Do not promise guaranteed trading profit.
+
+Do not claim AI predictions are guaranteed.
+
+Do not manipulate actual trade outcomes based on user attributes or bet size.
+
+Because the application may involve virtual assets and crypto-related functionality, include appropriate legal/compliance review before enabling real-money/crypto transactions in production.
+
+
+---
+
+77. OWNER TREASURY
+
+Treasury owner:
+
+Telegram ID:
+
+8522783212
+
+Owner dashboard should display:
+
+platform revenue
+
+VIP revenue
+
+promotion revenue
+
+trading fees
+
+conversion fees
+
+withdrawal fees
+
+Ads revenue
+
+pending liabilities
+
+treasury balance
+
+house P&L
+
+
+Keep liabilities separate from revenue.
+
+
+---
+
+78. MAIN DASHBOARD UX
+
+Top area:
+
+X COIN logo
+
+Balance:
+
+25,000 XCOIN
+
+Below:
+
+Energy
+
+Tap Power
+
+Recharge
+
+Capacity
+
+Main large coin button.
+
+Below:
+
+Quick actions:
+
+Upgrade
+
+Bonus
+
+Friends
+
+Trade
+
+Wallet
+
+
+---
+
+79. TRADING UX
+
+Top:
+
+XC balance
+
+Market status
+
+Market statistics
+
+Then:
+
+Expiry selector
+
+Amount selector
+
+UP
+
+DOWN
+
+AI analytics button for eligible VIP users
+
+Open trades
+
+Trade history
+
+
+---
+
+80. VIP UX
+
+Premium VIP cards.
+
+Show:
+
+plan name
+
+price
+
+benefits
+
+AI access
+
+analytics
+
+limits
+
+payment button
+
+
+After purchase:
+
+VIP status
+
+activation date
+
+expiration date if applicable
+
+
+---
+
+81. LEADERBOARD UX
+
+Tabs:
+
+Traders
+
+Referrers
+
+Earners
+
+Each should load real database results.
+
+Show podium only if enough real users exist.
+
+Do not manufacture podium entries.
+
+
+---
+
+82. ADMIN UI STYLE
+
+Admin panel should use:
+
+dark premium layout
+
+sidebar
+
+dashboard cards
+
+charts
+
+tables
+
+filters
+
+search
+
+pagination
+
+modal forms
+
+confirmation dialogs
+
+
+Use real data only.
+
+
+---
+
+83. ADMIN CONFIRMATIONS
+
+Dangerous actions require confirmation.
+
+Examples:
+
+revoke admin
+
+freeze user
+
+approve withdrawal
+
+reject withdrawal
+
+approve VIP
+
+change conversion rate
+
+pause trading
+
+modify treasury
+
+wallet adjustment
+
+
+For high-risk actions require reason.
+
+
+---
+
+84. AUDITABILITY
+
+Every sensitive action must produce an audit event.
+
+No silent administrative changes.
+
+
+---
+
+85. TESTING
+
+Before considering the project complete, test:
+
+Tap
+
+1 tap = 1 reward
+
+10 rapid taps = 10 rewards
+
+No double tap
+
+No stale balance rollback
+
+Duplicate batch = one processing
+
+Upgrade
+
+Correct price
+
+Correct reward
+
+No duplicate purchase
+
+Referral
+
+No self referral
+
+No duplicate referral
+
+Trading
+
+Correct minimum
+
+Correct maximum
+
+Correct expiry
+
+Correct settlement
+
+No client-side manipulation
+
+Withdrawal
+
+Correct balance reservation
+
+Correct fee
+
+Correct status
+
+No double withdrawal
+
+VIP
+
+One payment = one activation
+
+Duplicate TXID rejected
+
+Leaderboards
+
+Only real users
+
+Correct ranking data
+
+Correct win rate
+
+Admin
+
+Correct permissions
+
+Revoked key cannot login
+
+Expired key cannot login
+
+Normal admin cannot become Owner
+
+Telegram
+
+Invalid initData rejected
+
+Valid Telegram user accepted
+
+
+---
+
+86. FINAL ACCEPTANCE TEST
+
+Do not say the application is complete merely because the UI renders.
+
+The application is complete only when:
+
+Firebase works
+
+Telegram validation works
+
+real users are created
+
+balances are authoritative
+
+tap system is idempotent
+
+upgrades work
+
+bonuses work
+
+referrals work
+
+leaderboards use real data
+
+trading uses server authority
+
+conversions work
+
+withdrawals work
+
+VIP payment flow works
+
+AI analytics works
+
+Admin RBAC works
+
+Owner controls work
+
+audit logs work
+
+security controls work
+
+no fake data exists
+
+mobile UI works
+
+production build succeeds
+
+
+
+---
+
+87. FINAL IMPLEMENTATION RULE
+
+Build the application in a way that all modules are connected.
+
+Do not create isolated UI screens that do nothing.
+
+If an API, Firestore collection, environment variable, security rule, server function, or configuration is required for a feature, create the required architecture.
+
+If something requires a secret:
+
+use environment variables.
+
+If something affects money or balances:
+
+use server-side validation and atomic transactions.
+
+If something affects permissions:
+
+use server-side RBAC.
+
+If something affects Telegram identity:
+
+validate Telegram initData server-side.
+
+If something affects trading settlement:
+
+keep settlement server-authoritative.
+
+If there is no real data:
+
+show an empty state.
+
+Never fake data.
+
+
+---
+
+88. DEPLOYMENT
+
+Make the application production-build ready for Vercel/Next.js.
+
+Check:
+
+TypeScript errors
+
+ESLint errors
+
+missing imports
+
+environment variables
+
+Firebase initialization
+
+server/client boundaries
+
+API route errors
+
+Firestore rules
+
+Firestore indexes
+
+responsive layout
+
+Telegram WebApp compatibility
+
+
+Do not finish with unresolved build errors.
+
+
+---
+
+89. IMPORTANT FINAL INSTRUCTION
+
+Start from the existing project if source code exists, but refactor broken architecture rather than layering more hacks on top.
+
+If existing code conflicts with this specification:
+
+this specification takes priority.
+
+Remove fake/demo data.
+
+Remove duplicate event handlers.
+
+Remove insecure client-side financial logic.
+
+Remove fake leaderboard entries.
+
+Remove fake trading statistics.
+
+Remove fake AI accuracy.
+
+Replace them with real production implementations.
+
+The final application must feel like one coherent premium X COIN platform, not a collection of disconnected demos.
+
+END OF MASTER PROMPT. 
+
+
+FINAL TALK- ALL ACCES IN OWNER HAND HE CAN CHANGE ANYTHIN 
+============================================================
+X COIN — X CRASH GAME MODULE
+PRODUCTION-READY CRASH GAME / AVIATOR-STYLE GAME
+============================================================
+
+IMPORTANT:
+Implement X CRASH as a completely separate game module beside Trading Arena.
+
+The game must be REAL, SERVER-AUTHORITATIVE and DATABASE-CONNECTED.
+
+DO NOT create fake players, fake balances, fake rounds, fake statistics,
+fake crash points, fake wins or fake house profit.
+
+All game data must come from the real production database.
+
+============================================================
+1. GAME IDENTITY
+============================================================
+
+Game Name:
+X CRASH
+
+Display:
+✈️ X CRASH
+
+Place:
+Trading Arena-এর পাশে আলাদা game card/tab হিসেবে দেখাতে হবে।
+
+X CRASH uses XC as the betting asset.
+
+XC is the trading/game asset and is NOT directly withdrawable.
+
+Users can use their available XC balance to place X CRASH bets.
+
+XCOIN and XC must remain completely separated.
+
+Never deduct XCOIN directly for an X CRASH bet.
+
+============================================================
+2. GAME CONCEPT
+============================================================
+
+Each round starts at:
+
+1.00x
+
+The multiplier increases smoothly:
+
+1.00x
+1.01x
+1.02x
+1.03x
+...
+2.00x
+3.00x
+5.00x
+10.00x
+etc.
+
+At an unpredictable server-determined point, the plane crashes.
+
+Example:
+
+1.00x
+1.14x
+1.31x
+1.72x
+2.10x
+2.84x
+3.47x
+💥 CRASH
+
+If the player successfully cashes out before the crash:
+
+Payout = Bet Amount × Cashout Multiplier
+
+Example:
+
+Bet = 100 XC
+Cashout = 3.20x
+
+Payout = 320 XC
+
+Profit = 220 XC
+
+If the plane crashes before cashout:
+
+Payout = 0 XC
+
+Bet is lost.
+
+============================================================
+3. ROUND STATES
+============================================================
+
+Every round must have a strict state machine:
+
+WAITING
+BETTING
+RUNNING
+CRASHED
+SETTLED
+
+Optional:
+
+PAUSED
+CANCELLED
+EMERGENCY_STOP
+
+Allowed transitions:
+
+WAITING → BETTING
+BETTING → RUNNING
+RUNNING → CRASHED
+CRASHED → SETTLED
+
+Never allow invalid state transitions.
+
+Client must NEVER control the round state.
+
+Server controls the complete lifecycle.
+
+============================================================
+4. ROUND TIMING
+============================================================
+
+Admin configurable:
+
+bettingDurationMs
+countdownDurationMs
+minimumRoundInterval
+maximumRoundInterval
+
+Default example:
+
+BETTING:
+8 seconds
+
+COUNTDOWN:
+3 seconds
+
+RUNNING:
+Until server-generated crash point
+
+After crash:
+
+Short result display
+
+Then next round.
+
+Do not use client JavaScript timers as the source of truth.
+
+Client timers are visual only.
+
+Server timestamp is authoritative.
+
+============================================================
+5. SERVER-AUTHORITATIVE CRASH POINT
+============================================================
+
+The crash point MUST be generated server-side.
+
+Never generate crash point using:
+
+Math.random() in browser
+client JavaScript
+client device time
+client-provided random number
+client-provided multiplier
+client-provided result
+
+The client receives only the required round information.
+
+============================================================
+6. PROVABLY-FAIR DESIGN
+============================================================
+
+Use a cryptographically secure server-side randomness system.
+
+Recommended architecture:
+
+Before the round begins:
+
+serverSeed
+serverSeedHash
+roundId
+nonce
+
+Generate:
+
+serverSeedHash = SHA-256(serverSeed)
+
+Publish:
+
+roundId
+serverSeedHash
+
+The actual serverSeed remains secret until the round is completed
+or until the configured seed rotation/reveal policy allows disclosure.
+
+Crash point must be deterministically derived from:
+
+serverSeed
+roundId
+nonce
+
+using a cryptographically secure HMAC/SHA-256 based algorithm.
+
+Example conceptual flow:
+
+HMAC_SHA256(serverSeed, roundId + ":" + nonce)
+
+Then convert the resulting cryptographic output into a deterministic
+crash multiplier according to the configured mathematical distribution.
+
+IMPORTANT:
+
+Do NOT reveal serverSeed before the round.
+
+After the configured reveal point:
+
+publish:
+
+serverSeed
+serverSeedHash
+roundId
+nonce
+crashPoint
+
+Users must be able to independently verify:
+
+SHA256(serverSeed) == previously published serverSeedHash
+
+and verify the resulting crash point from the public algorithm.
+
+============================================================
+7. HOUSE EDGE
+============================================================
+
+Admin may configure a documented mathematical house edge.
+
+Example:
+
+houseEdgeBps = 300
+
+means:
+
+3.00%
+
+The house edge must be implemented mathematically in the
+crash-point generation/distribution system.
+
+DO NOT implement house edge by:
+
+looking at player bets
+looking at VIP tier
+looking at player balance
+looking at player history
+looking at majority UP/DOWN equivalent
+looking at current round liability
+changing crash point after seeing bets
+
+The crash point must be determined independently of individual player bets.
+
+============================================================
+8. ABSOLUTELY NO INDIVIDUAL OUTCOME MANIPULATION
+============================================================
+
+NEVER change the crash point because:
+
+user bet is large
+user bet is small
+user is VIP
+user is non-VIP
+user won previous round
+user lost previous round
+user has high balance
+user has low balance
+many users bet
+few users bet
+users cash out early
+users cash out late
+admin dislikes a player
+AI predicts a different result
+
+All players participating in the same round must receive the same
+server-authoritative crash result.
+
+============================================================
+9. BETTING SYSTEM
+============================================================
+
+Admin configurable:
+
+minBetXC
+maxBetXC
+maxConcurrentBets
+maxBetsPerUserPerRound
+dailyUserBetLimit
+dailyUserVolumeLimit
+
+Default example:
+
+minBetXC = 100
+maxBetXC = 100000
+
+Before accepting a bet:
+
+1. Authenticate Telegram user
+2. Validate session
+3. Validate account status
+4. Validate security status
+5. Validate round state
+6. Validate round ID
+7. Validate bet amount
+8. Validate available XC balance
+9. Validate per-user limits
+10. Validate rate limit
+11. Validate idempotency key
+12. Atomically reserve/deduct XC
+13. Create bet record
+14. Return authoritative server result
+
+============================================================
+10. BET IDEMPOTENCY
+============================================================
+
+Every bet request must contain:
+
+betId
+requestId
+roundId
+
+Server must guarantee:
+
+same betId cannot be processed twice.
+
+If client retries because of bad network:
+
+the server returns the original result.
+
+Never deduct XC twice.
+
+Never create duplicate bets.
+
+============================================================
+11. WALLET SETTLEMENT
+============================================================
+
+Never trust the client balance.
+
+Example:
+
+Before bet:
+
+User XC:
+10,000
+
+Bet:
+500 XC
+
+Server transaction:
+
+10,000 - 500 = 9,500
+
+When cashout succeeds:
+
+500 × 2.50 = 1,250 XC
+
+Server credits:
+
+9,500 + 1,250 = 10,750 XC
+
+Net profit:
+
++750 XC
+
+When crash happens before cashout:
+
+No payout.
+
+Final:
+
+9,500 XC
+
+All wallet operations must use server-side atomic transactions.
+
+============================================================
+12. CASHOUT
+============================================================
+
+Cashout request:
+
+POST /api/crash/cashout
+
+Required:
+
+userId
+roundId
+betId
+requestId
+clientTimestamp
+
+Server determines the exact authoritative multiplier based on
+server time and round state.
+
+Client cannot submit:
+
+cashoutMultiplier
+
+as the source of truth.
+
+If client sends:
+
+cashoutMultiplier = 5.00
+
+server must ignore it.
+
+Server calculates the actual multiplier.
+
+============================================================
+13. CASHOUT RACE CONDITION
+============================================================
+
+Critical requirement:
+
+Cashout and crash settlement may happen nearly simultaneously.
+
+Use one atomic server-side settlement mechanism.
+
+Possible result:
+
+CASHED_OUT
+
+or
+
+CRASHED
+
+Never both.
+
+A bet must have a final immutable status.
+
+Example:
+
+PENDING
+CASHED_OUT
+LOST
+CANCELLED
+
+Once status becomes:
+
+CASHED_OUT
+
+it cannot become LOST.
+
+Once status becomes:
+
+LOST
+
+it cannot become CASHED_OUT.
+
+============================================================
+14. AUTO CASHOUT
+============================================================
+
+Optional feature:
+
+Auto Cashout
+
+Example:
+
+User enters:
+
+Auto Cashout = 2.50x
+
+Server automatically cashes out when authoritative multiplier
+reaches 2.50x before crash.
+
+The client must NOT be responsible for executing auto-cashout.
+
+Server-side worker/scheduler must handle it.
+
+If crash occurs before 2.50x:
+
+bet is LOST.
+
+============================================================
+15. TWO-BET SUPPORT
+============================================================
+
+Optional premium feature:
+
+Allow a user to place:
+
+Bet A
+Bet B
+
+in the same round.
+
+Example:
+
+Bet A:
+500 XC
+Auto Cashout 2.00x
+
+Bet B:
+500 XC
+Manual Cashout
+
+Admin configurable:
+
+maxBetsPerRoundPerUser
+
+Default:
+
+2
+
+Every bet must have a separate:
+
+betId
+settlement
+ledger entry
+status
+
+============================================================
+16. LIVE MULTIPLIER
+============================================================
+
+UI must show a smooth real-time multiplier.
+
+Example:
+
+1.00x → 1.01x → 1.02x → ...
+
+Animation may run client-side.
+
+BUT:
+
+the visual animation is not authoritative.
+
+Server sends:
+
+roundStartServerTime
+crashPoint
+serverTime
+roundId
+
+Client calculates visual interpolation only for display.
+
+All settlement decisions happen server-side.
+
+============================================================
+17. DISCONNECT HANDLING
+============================================================
+
+If user disconnects:
+
+Bet remains active on server.
+
+Do NOT automatically lose a bet merely because:
+
+Telegram WebView closed
+internet disconnected
+browser backgrounded
+screen locked
+app minimized
+
+If the user has not cashed out and server reaches crash:
+
+bet loses normally.
+
+If auto-cashout was configured:
+
+server executes it independently.
+
+============================================================
+18. ROUND HISTORY
+============================================================
+
+Show real historical rounds.
+
+Example:
+
+#12842 — 1.32x
+#12841 — 2.87x
+#12840 — 1.08x
+#12839 — 7.42x
+#12838 — 3.21x
+
+Each record:
+
+roundId
+createdAt
+startedAt
+crashedAt
+crashPoint
+serverSeedHash
+verificationStatus
+
+Never create fake history.
+
+============================================================
+19. PLAYER HISTORY
+============================================================
+
+Each user can see:
+
+Total bets
+Total volume
+Total wins
+Total losses
+Total cashout
+Average cashout
+Highest cashout
+Largest bet
+Largest win
+Current streak
+Best streak
+Total profit/loss
+
+All statistics calculated from real settled records.
+
+============================================================
+20. GAME LEADERBOARD
+============================================================
+
+Add:
+
+Top X Crash Players
+
+Rank by configurable metric:
+
+totalVolume
+totalProfit
+totalWins
+largestWin
+
+Do not automatically label users as "best".
+
+Show factual statistics.
+
+Only include real completed/settled data.
+
+============================================================
+21. GAME STATISTICS
+============================================================
+
+Admin dashboard:
+
+Total rounds
+Completed rounds
+Cancelled rounds
+Total bet volume
+Total payout volume
+Total house revenue
+Average crash multiplier
+Median crash multiplier
+Highest crash multiplier
+Lowest crash multiplier
+Active players
+Unique players
+Cashout count
+Loss count
+
+House P&L:
+
+totalBets
+totalPayouts
+gameFees
+netHousePnL
+
+House revenue must be calculated from actual ledger data.
+
+============================================================
+22. REVENUE LEDGER
+============================================================
+
+Every financial movement must have a ledger entry.
+
+Example:
+
+CRASH_BET
+CRASH_PAYOUT
+CRASH_REFUND
+CRASH_FEE
+
+Required:
+
+ledgerId
+userId
+betId
+roundId
+asset
+amount
+type
+direction
+timestamp
+balanceBefore
+balanceAfter
+referenceId
+
+Never edit financial ledger history directly.
+
+Corrections must create compensating ledger entries.
+
+============================================================
+23. ADMIN GAME CONTROL
+============================================================
+
+Add:
+
+ADMIN → X CRASH
+
+Dashboard:
+
+Game Status
+Current Round
+Next Round
+Current Multiplier
+Current Player Count
+Current Bet Volume
+Current Round Exposure
+Last Crash Point
+Total Volume
+Total Payout
+House P&L
+
+Controls:
+
+Enable Game
+Disable Game
+Pause Game
+Resume Game
+Emergency Stop
+
+Configuration:
+
+Minimum Bet
+Maximum Bet
+Round Duration
+Betting Duration
+House Edge
+Auto Cashout
+Maximum Bets
+Rate Limits
+Daily Limits
+
+============================================================
+24. ADMIN CANNOT MODIFY A LIVE ROUND RESULT
+============================================================
+
+After a round enters RUNNING:
+
+Admin must NOT be able to edit:
+
+crashPoint
+serverSeed
+round outcome
+existing bet settlement
+
+Even Owner should not have a normal UI control for changing
+the outcome of a running round.
+
+Emergency controls may stop NEW betting or pause future rounds,
+but must not rewrite historical financial results.
+
+============================================================
+25. ROUND AUDIT
+============================================================
+
+Every round must store:
+
+roundId
+serverSeedHash
+serverSeedRevealStatus
+nonce
+createdAt
+bettingStartedAt
+runningAt
+crashedAt
+settledAt
+crashPoint
+houseEdgeConfigVersion
+algorithmVersion
+status
+
+Every important action gets:
+
+auditLogId
+actor
+action
+timestamp
+previousState
+newState
+reason
+
+============================================================
+26. AI ANALYTICS
+============================================================
+
+AI may be integrated into X CRASH.
+
+But AI must NOT secretly control individual crash outcomes.
+
+AI can analyze:
+
+historical crash distribution
+round frequency
+average multiplier
+volatility
+player behavior
+bot behavior
+fraud patterns
+abnormal betting
+unusual cashout patterns
+system anomalies
+
+AI dashboard:
+
+Total Rounds
+Average Crash
+Median Crash
+Distribution
+1.00–1.20x
+1.21–1.50x
+1.51–2.00x
+2.01–3.00x
+3.01–5.00x
+5.01x+
+
+AI anomaly score
+
+AI model version
+
+AI analysis timestamp
+
+============================================================
+27. AI PREDICTION
+============================================================
+
+If AI Prediction is offered to VIP users:
+
+It must be clearly labelled:
+
+"AI statistical analysis"
+
+NOT:
+
+"Guaranteed result"
+
+NOT:
+
+"Guaranteed profit"
+
+NOT:
+
+"Certain crash point"
+
+AI prediction must never modify the actual game result.
+
+VIP users may receive:
+
+Historical trend analysis
+Statistical indicators
+Volatility analysis
+Historical distribution
+AI confidence score
+
+But the actual crash point remains determined by
+the pre-defined server fairness mechanism.
+
+============================================================
+28. VIP INTEGRATION
+============================================================
+
+VIP tiers may unlock:
+
+AI analytics
+Advanced history
+Detailed statistics
+Prediction history
+Additional charts
+Advanced game analytics
+Higher configured limits
+
+But VIP status must NOT increase or decrease the probability of
+winning an individual round.
+
+Do not create:
+
+VIP wins more
+VIP gets lower crash
+VIP gets higher crash
+VIP gets protected bets
+
+VIP only changes access/features/limits where explicitly configured.
+
+============================================================
+29. ANTI-BOT SECURITY
+============================================================
+
+Integrate with existing X COIN security architecture.
+
+Detect:
+
+rapid automated betting
+repeated identical timing
+impossible human interaction patterns
+abnormal request frequency
+request replay
+duplicate request IDs
+multiple concurrent sessions
+device mismatch
+automation frameworks
+tampered client
+suspicious WebView behavior
+abnormal cashout timing
+
+Use:
+
+rate limiting
+request signatures
+nonce
+idempotency
+server timestamps
+device security
+session validation
+risk scoring
+
+Never rely on one fingerprint alone.
+
+============================================================
+30. TERMUX / PYTHON FARMING DEFENSE
+============================================================
+
+A malicious user must not be able to create a Python/Termux script
+that directly calls:
+
+placeBet
+cashout
+autoCashout
+wallet
+round APIs
+
+without passing server authentication and authorization.
+
+Every financial endpoint must require:
+
+valid authenticated session
+valid Telegram identity
+valid device/session security
+valid request
+valid nonce
+valid timestamp
+valid idempotency key
+valid rate limit
+
+Never expose privileged Firebase credentials to the client.
+
+============================================================
+31. FIREBASE DATABASE
+============================================================
+
+Create:
+
+crashRounds
+
+crashBets
+
+crashSettlements
+
+crashConfig
+
+crashHistory
+
+crashAnalytics
+
+crashSeeds
+
+crashRiskEvents
+
+crashLeaderboard
+
+crashAuditLogs
+
+============================================================
+32. crashRounds SCHEMA
+============================================================
+
+{
+  roundId,
+  status,
+  createdAt,
+  bettingStartedAt,
+  runningAt,
+  crashedAt,
+  settledAt,
+
+  serverTimeStart,
+  serverTimeEnd,
+
+  serverSeedHash,
+  serverSeedRevealStatus,
+
+  nonce,
+  crashPoint,
+
+  algorithmVersion,
+  configVersion,
+
+  totalBetVolume,
+  totalPayoutVolume,
+  playerCount,
+
+  createdBy: "SYSTEM"
+}
+
+============================================================
+33. crashBets SCHEMA
+============================================================
+
+{
+  betId,
+  roundId,
+  userId,
+  telegramUserId,
+
+  asset: "XC",
+
+  betAmount,
+
+  autoCashoutMultiplier,
+
+  status,
+
+  cashoutMultiplier,
+  payoutAmount,
+  profitLoss,
+
+  placedAt,
+  cashoutAt,
+  settledAt,
+
+  requestId,
+  deviceSessionId,
+
+  riskScore
+}
+
+============================================================
+34. CRASH CONFIG
+============================================================
+
+crashConfig/main
+
+Fields:
+
+enabled
+maintenanceMode
+
+minBetXC
+maxBetXC
+
+bettingDurationMs
+
+houseEdgeBps
+
+maxBetsPerUserPerRound
+
+autoCashoutEnabled
+
+maxDailyVolume
+
+algorithmVersion
+
+seedRotationPolicy
+
+vipAnalyticsEnabled
+
+updatedAt
+updatedBy
+
+Config changes must create an audit log.
+
+============================================================
+35. SECURITY RULE
+============================================================
+
+The client must never have write access to:
+
+crashRounds.crashPoint
+crashRounds.serverSeed
+crashSettlements
+wallet balances
+revenueLedger
+housePnL
+
+Only trusted backend/server functions can write these values.
+
+Firestore Security Rules must enforce this.
+
+============================================================
+36. WALLET CONSISTENCY
+============================================================
+
+Every:
+
+BET
+
+PAYOUT
+
+REFUND
+
+must have matching:
+
+wallet transaction
+ledger entry
+bet settlement
+
+Create reconciliation jobs.
+
+Example:
+
+sum(all CRASH_BET)
+-
+sum(all CRASH_PAYOUT)
+=
+expected game net result
+
+Any mismatch:
+
+CREATE SECURITY EVENT
+
+and alert Owner.
+
+============================================================
+37. EMERGENCY SYSTEM
+============================================================
+
+Owner can:
+
+STOP NEW BETS
+STOP NEW ROUNDS
+PAUSE GAME
+LOCK GAME
+ENABLE MAINTENANCE
+
+Emergency action must NOT rewrite previous rounds.
+
+Create:
+
+securityEvent
+auditLog
+systemAlert
+
+with:
+
+ownerTelegramId
+timestamp
+reason
+action
+
+============================================================
+38. USER INTERFACE
+============================================================
+
+Design:
+
+Deep Obsidian
+Black
+Champagne Gold
+Glassmorphism
+Premium fintech aesthetic
+
+No childish casino design.
+
+Main screen:
+
+--------------------------------
+✈️ X CRASH
+
+Current:
+2.48x
+
+[ PLANE ANIMATION ]
+
+💰 Your XC:
+25,840
+
+Bet Amount
+[-] 500 [+]
+
+[ AUTO CASHOUT ]
+2.00x
+
+[ PLACE BET ]
+
+[ CASH OUT ]
+
+--------------------------------
+
+Live players:
+1,284
+
+Round:
+#12842
+
+Previous:
+
+1.22x  2.87x  1.04x  4.31x  1.73x
+--------------------------------
+
+============================================================
+39. BET UI
+============================================================
+
+Presets:
+
+100
+500
+1K
+5K
+10K
+50K
+100K
+
+Admin configurable.
+
+Do not allow the client to bypass:
+
+minBet
+maxBet
+
+============================================================
+40. CASHOUT BUTTON
+============================================================
+
+When user's bet is active:
+
+Show:
+
+CASH OUT
+
+500 XC
+2.43x
+Payout:
+1215 XC
+
+Button must update smoothly.
+
+Server confirms the actual payout.
+
+After successful cashout:
+
+SUCCESS
+
+2.43x
+
++1215 XC
+
+Then disable the bet.
+
+============================================================
+41. CRASH ANIMATION
+============================================================
+
+Plane should fly upward.
+
+Multiplier increases visually.
+
+At crash:
+
+Plane disappears/explodes/falls.
+
+Display:
+
+💥 CRASHED
+
+4.37x
+
+Then transition to next round.
+
+Animation must never determine the result.
+
+Server result determines animation.
+
+============================================================
+42. RESPONSIVE TELEGRAM MINI APP
+============================================================
+
+Must work correctly on:
+
+Android Telegram
+iOS Telegram
+Telegram Desktop
+Mobile browsers where supported
+
+Use Telegram WebApp viewport safely.
+
+No layout overflow.
+
+No accidental double tap.
+
+No duplicate event listeners.
+
+============================================================
+43. HAPTICS
+============================================================
+
+Use Telegram-supported haptic feedback where available.
+
+On:
+
+Bet placed
+Cashout success
+Crash
+Error
+
+Do not spam haptic calls.
+
+============================================================
+44. NOTIFICATION
+============================================================
+
+Optional:
+
+User notification:
+
+"Your X CRASH bet was placed."
+
+"Cashout successful."
+
+"Round crashed."
+
+"Auto cashout executed."
+
+Do not send excessive notifications.
+
+============================================================
+45. RESPONSIBLE GAME INFORMATION
+============================================================
+
+Display clearly:
+
+"X CRASH is a chance-based game."
+
+"Past results do not guarantee future results."
+
+"AI analysis does not guarantee profit."
+
+"Crash results are generated by the server fairness mechanism."
+
+"Never risk more than you can afford to lose."
+
+Do not display fake claims such as:
+
+"Guaranteed win"
+"90% AI accuracy"
+"VIP cannot lose"
+
+============================================================
+46. LEGAL / COMPLIANCE CONFIG
+============================================================
+
+Make the module feature-flagged and jurisdiction-aware.
+
+The system must support:
+
+gameEnabledByJurisdiction
+ageRestriction
+termsAcceptance
+responsibleGamingNotice
+selfExclusion
+accountRestriction
+
+Do not automatically enable real-money/crypto gameplay in a jurisdiction
+where applicable law or regulation prohibits or restricts it.
+
+Owner must be able to disable the entire X CRASH module globally.
+
+============================================================
+47. NO FAKE DATA
+============================================================
+
+Never create:
+
+fake players
+fake bets
+fake crash history
+fake leaderboard
+fake volume
+fake house profit
+fake AI statistics
+
+If there are no real users:
+
+Show:
+
+"No players yet."
+
+If there is no history:
+
+"No completed rounds yet."
+
+============================================================
+48. ADMIN ANALYTICS
+============================================================
+
+Admin dashboard must include:
+
+TODAY
+
+Rounds:
+1248
+
+Players:
+284
+
+Bet Volume:
+1,284,500 XC
+
+Payout:
+1,247,300 XC
+
+Net:
+37,200 XC
+
+These numbers must come from actual database aggregation.
+
+Never hardcode them.
+
+============================================================
+49. OWNER TREASURY
+============================================================
+
+Owner Telegram ID:
+
+8522783212
+
+House/game revenue must be recorded in:
+
+treasury
+revenueLedger
+
+Categories:
+
+CRASH_GAME_REVENUE
+CRASH_GAME_REFUND
+CRASH_GAME_ADJUSTMENT
+
+Never mix:
+
+user liability
+
+with:
+
+platform revenue.
+
+============================================================
+50. FINANCIAL RECONCILIATION
+============================================================
+
+Run periodic reconciliation:
+
+User wallet balances
++
+pending liabilities
++
+ledger movements
+
+must remain internally consistent.
+
+If mismatch detected:
+
+STOP affected financial operations
+
+CREATE SECURITY EVENT
+
+ALERT OWNER
+
+DO NOT silently correct balances.
+
+============================================================
+51. ADMIN PERMISSIONS
+============================================================
+
+Add permissions:
+
+crash.view
+crash.configure
+crash.pause
+crash.emergency
+crash.analytics
+crash.audit
+crash.reconciliation
+
+Only authorized Admin Keys can access these.
+
+Owner has full access.
+
+Normal admin cannot grant itself:
+
+crash.configure
+crash.emergency
+owner permissions
+
+unless explicitly authorized by Owner RBAC.
+
+============================================================
+52. AUDIT LOG
+============================================================
+
+Record:
+
+Who changed crash configuration
+Who paused game
+Who resumed game
+Who triggered emergency stop
+Who changed house edge
+Who changed betting limits
+Who changed algorithm version
+Who changed jurisdiction settings
+
+Every action:
+
+adminId
+telegramId
+permission
+action
+oldValue
+newValue
+timestamp
+sessionId
+reason
+referenceId
+
+============================================================
+53. ALGORITHM VERSIONING
+============================================================
+
+Never silently change the fairness algorithm.
+
+Every round stores:
+
+algorithmVersion
+
+Example:
+
+CRASH-V1
+
+When changing algorithm:
+
+create:
+
+CRASH-V2
+
+Document:
+
+algorithmVersion
+effectiveAt
+configuration
+auditLog
+
+Old rounds remain verifiable using their original algorithm.
+
+============================================================
+54. FAIRNESS VERIFICATION PAGE
+============================================================
+
+Create:
+
+"Verify Fairness"
+
+User enters/selects:
+
+Round ID
+
+The page displays:
+
+Round ID
+Server Seed Hash
+Revealed Server Seed
+Nonce
+Algorithm Version
+Crash Point
+
+Provide:
+
+"Verify Round"
+
+The verification process independently recalculates the result.
+
+If:
+
+calculatedCrashPoint === storedCrashPoint
+
+show:
+
+✓ VERIFIED
+
+Otherwise:
+
+⚠ VERIFICATION FAILED
+
+Never falsely display VERIFIED.
+
+============================================================
+55. TESTING
+============================================================
+
+Before production deployment, automatically test:
+
+1. One bet = one bet record
+2. Duplicate request = one bet
+3. Duplicate cashout = one payout
+4. Cashout before crash = payout
+5. Cashout after crash = rejected
+6. Crash before cashout = loss
+7. Auto cashout = server executed
+8. Disconnect = server continues round
+9. Client multiplier manipulation = ignored
+10. Client payout manipulation = ignored
+11. Client balance manipulation = ignored
+12. Duplicate webhook/request = ignored
+13. Invalid round ID = rejected
+14. Wrong user ID = rejected
+15. Expired session = rejected
+16. Frozen account = rejected
+17. Device security violation = restricted
+18. Rate-limit violation = blocked
+19. Firestore direct write attempt = denied
+20. Ledger mismatch = alert
+21. Round result cannot be changed after settlement
+22. Admin cannot rewrite historical result
+23. VIP cannot modify probability
+24. AI cannot modify crash point
+25. House edge cannot depend on individual player
+26. Same round has same crash result for every participant
+27. Seed hash verification works
+28. Historical round verification works
+29. Wallet balance remains consistent
+30. Reconciliation catches artificial mismatch
+
+============================================================
+56. PRODUCTION ACCEPTANCE CRITERIA
+============================================================
+
+X CRASH is NOT considered complete until:
+
+✓ Real Firebase data
+✓ Real server-side round engine
+✓ Real XC wallet integration
+✓ Server-authoritative bets
+✓ Server-authoritative cashout
+✓ Atomic settlement
+✓ Idempotency
+✓ Anti-replay
+✓ Rate limiting
+✓ Device/session security
+✓ Anti-bot protection
+✓ Provably-fair verification
+✓ Real round history
+✓ Real leaderboard
+✓ Real statistics
+✓ Real house P&L
+✓ Revenue ledger
+✓ Admin controls
+✓ Owner controls
+✓ RBAC
+✓ Audit logs
+✓ Emergency controls
+✓ AI analytics
+✓ VIP analytics integration
+✓ No outcome manipulation
+✓ No fake data
+✓ No client-side financial authority
+✓ Automated tests
+✓ Production error handling
+✓ Monitoring
+✓ Reconciliation
+
+============================================================
+57. IMPORTANT FINAL RULE
+============================================================
+
+The X CRASH game must behave as a genuine server-authoritative
+chance-based game.
+
+The system must NEVER secretly determine an individual user's result
+based on:
+
+bet amount
+VIP level
+balance
+identity
+previous results
+profit/loss
+number of players
+majority betting side
+admin preference
+AI preference
+
+The mathematical game configuration, documented house edge and
+cryptographically verifiable round-generation mechanism determine
+the result.
+
+AI is for analytics/risk/fraud/statistical assistance only.
+
+Admin controls configuration, availability, limits and emergency
+operations — NOT individual player outcomes.
+
+All financial operations are server-side.
+
+All balances are authoritative.
+
+All settlements are immutable after completion.
+
+All important actions are auditable.
+
+============================================================
+END OF X CRASH MODULE
+============================================================
+X COIN — MAXIMUM SECURITY / ANTI-BOT / SINGLE-DEVICE SECURITY MASTER PROMPT
+
+Build and integrate a production-grade security architecture for the entire X COIN Telegram Mini App.
+
+This is NOT a UI-only security feature.
+
+Security must be enforced server-side for every sensitive operation.
+
+============================================================
+0. SECURITY OBJECTIVES
+============================================================
+
+Primary objectives:
+
+1. One Telegram account = one trusted X COIN device.
+2. Detect unauthorized second-device access.
+3. Detect automated farming through Termux/Python/scripts/bots.
+4. Prevent replay attacks.
+5. Prevent duplicate financial operations.
+6. Prevent client-side balance manipulation.
+7. Prevent fake Telegram identity.
+8. Prevent session hijacking.
+9. Protect withdrawals.
+10. Protect VIP payments.
+11. Protect referrals and rewards.
+12. Protect trading and conversion.
+13. Protect Owner/Admin accounts.
+14. Maintain complete security audit history.
+15. Provide safe recovery for legitimate device changes.
+
+IMPORTANT:
+
+No security mechanism should claim to be 100% bot-proof.
+
+Use multiple independent security layers.
+
+============================================================
+1. TRUST MODEL
+============================================================
+
+Never trust the client for:
+
+- Telegram identity
+- device identity
+- balance
+- XCOIN
+- XC
+- energy
+- Tap Power
+- reward amount
+- VIP status
+- admin role
+- permissions
+- trade result
+- withdrawal status
+- security status
+- risk score
+- transaction status
+
+The server is authoritative.
+
+Client = untrusted.
+
+Server = authoritative.
+
+Firestore = persistent state.
+
+Ledger = authoritative financial history.
+
+============================================================
+2. TELEGRAM IDENTITY VALIDATION
+============================================================
+
+Use Telegram Mini App initData.
+
+Never trust:
+
+Telegram.WebApp.initDataUnsafe
+
+for authorization.
+
+Send:
+
+Telegram.WebApp.initData
+
+to the backend.
+
+Validate it server-side using the official Telegram WebApp validation procedure.
+
+Only after successful validation:
+
+create/authenticate the X COIN user session.
+
+Reject:
+
+- missing initData
+- malformed initData
+- invalid signature
+- expired authentication data
+- modified user data
+- invalid hash
+
+Never allow client-submitted:
+
+telegramUserId
+
+to override the verified Telegram identity.
+
+============================================================
+3. SINGLE TRUSTED DEVICE
+============================================================
+
+Each Telegram ID can have exactly ONE trusted X COIN device.
+
+Database:
+
+deviceBindings/{bindingId}
+
+Fields:
+
+bindingId
+telegramUserId
+deviceId
+devicePublicKey
+status
+createdAt
+lastSeenAt
+lastVerifiedAt
+deviceModel
+os
+osVersion
+sdkVersion
+appVersion
+securityVersion
+
+Statuses:
+
+TRUSTED
+SUSPICIOUS
+REVOKED
+REPLACED
+
+Database constraint:
+
+Only one TRUSTED device per Telegram user.
+
+This rule must be enforced server-side.
+
+============================================================
+4. DEVICE REGISTRATION
+============================================================
+
+First verified login:
+
+Telegram validation
+↓
+Check existing trusted device
+↓
+No trusted device
+↓
+Generate secure device registration
+↓
+Register device
+↓
+Create cryptographic key
+↓
+Optional biometric verification
+↓
+Create secure session
+↓
+ACTIVE
+
+Never identify a device using only:
+
+IP address
+User-Agent
+device model
+
+These are supplementary signals only.
+
+============================================================
+5. CRYPTOGRAPHIC DEVICE BINDING
+============================================================
+
+Create a device key pair.
+
+Where platform capabilities permit:
+
+- Android Keystore
+- hardware-backed key storage
+- StrongBox where available
+
+Private key:
+
+MUST remain on the device.
+
+Never upload the private key.
+
+Server stores only:
+
+devicePublicKey
+
+and metadata.
+
+Device proves possession of private key by signing a server-generated challenge.
+
+============================================================
+6. CHALLENGE-RESPONSE
+============================================================
+
+For sensitive operations:
+
+Server generates:
+
+cryptographically random nonce.
+
+Example:
+
+challengeId
+nonce
+expiresAt
+
+Client signs:
+
+nonce + sessionId + requestId
+
+Server verifies the signature against:
+
+devicePublicKey
+
+Reject if:
+
+- signature invalid
+- nonce expired
+- nonce reused
+- challenge already consumed
+- wrong device key
+- wrong session
+
+============================================================
+7. NONCE REPLAY PROTECTION
+============================================================
+
+Every challenge must be single-use.
+
+Create:
+
+securityChallenges/{challengeId}
+
+Fields:
+
+challengeId
+telegramUserId
+deviceId
+nonceHash
+createdAt
+expiresAt
+usedAt
+status
+
+Statuses:
+
+ACTIVE
+USED
+EXPIRED
+REJECTED
+
+Never allow a challenge to be reused.
+
+============================================================
+8. SESSION SECURITY
+============================================================
+
+Every authenticated session contains:
+
+sessionId
+telegramUserId
+deviceId
+securityVersion
+createdAt
+lastActivityAt
+expiresAt
+status
+
+Statuses:
+
+ACTIVE
+EXPIRED
+REVOKED
+SUSPENDED
+
+Use short-lived access credentials where practical.
+
+Rotate sensitive session credentials.
+
+Do not store sensitive authorization tokens insecurely in localStorage.
+
+When securityVersion changes:
+
+invalidate all previous sessions.
+
+============================================================
+9. SECURITY VERSION
+============================================================
+
+users/{telegramUserId}
+
+Store:
+
+securityVersion
+
+Every session must match the current securityVersion.
+
+Increase securityVersion when:
+
+- device revoked
+- device replaced
+- suspicious login
+- account recovery
+- Owner force logout
+- security breach
+- high-risk event
+
+This instantly invalidates old sessions.
+
+============================================================
+10. BIOMETRIC SECURITY
+============================================================
+
+Use Telegram WebApp biometric capabilities where available.
+
+Support:
+
+- fingerprint
+- face authentication
+- device biometric authentication
+
+Biometric authentication is LOCAL DEVICE AUTHENTICATION.
+
+It is NOT proof of Telegram account ownership.
+
+Never:
+
+- upload fingerprint
+- upload face data
+- store biometric templates
+- attempt biometric matching server-side
+
+Store only:
+
+biometricEnabled
+biometricVerifiedAt
+biometricStatus
+
+Require biometric verification for configured sensitive operations.
+
+Examples:
+
+- withdrawal
+- device change
+- wallet security changes
+- high-value transactions
+- account recovery
+
+============================================================
+11. SECOND DEVICE DETECTION
+============================================================
+
+If:
+
+verifiedTelegramUserId
+
+matches an existing user
+
+AND
+
+incoming cryptographic device identity does NOT match trusted device:
+
+create:
+
+MULTI_DEVICE_DETECTED
+
+Immediately:
+
+1. Reject financial requests from new device.
+2. Mark new device SUSPICIOUS.
+3. Set account securityStatus = RESTRICTED.
+4. Freeze configured suspicious financial operations.
+5. Invalidate suspicious session.
+6. Create security event.
+7. Notify Owner/Security Center.
+8. Require secure review.
+
+Do NOT silently replace the original trusted device.
+
+============================================================
+12. SECOND DEVICE RESPONSE
+============================================================
+
+Show:
+
+SECURITY RESTRICTION
+
+"This X COIN account is already linked to another trusted device.
+
+For your protection, financial operations have been temporarily restricted.
+
+Please verify your device or contact support."
+
+Do not reveal internal detection algorithms.
+
+============================================================
+13. SECURITY HOLD
+============================================================
+
+Create:
+
+securityHolds/{holdId}
+
+Fields:
+
+holdId
+telegramUserId
+deviceId
+trustedDeviceId
+reason
+asset
+amount
+createdAt
+status
+securityEventId
+reviewedBy
+reviewedAt
+resolution
+
+Statuses:
+
+ACTIVE
+RELEASED
+RETURNED
+CONFISCATED
+CANCELLED
+
+Frozen funds cannot be withdrawn or transferred.
+
+============================================================
+14. NO AUTOMATIC CONFISCATION
+============================================================
+
+Never automatically transfer all user funds to Owner merely because:
+
+- device changed
+- IP changed
+- browser changed
+- Telegram WebView changed
+- VPN changed
+- OS updated
+
+Device mismatch should trigger:
+
+RESTRICT → FREEZE → INVESTIGATE
+
+not:
+
+DETECT → STEAL
+
+If legitimate abuse evidence exists and platform rules authorize confiscation:
+
+Owner must explicitly approve.
+
+Require:
+
+- Owner authentication
+- security event
+- reason
+- confirmation
+- ledger entry
+- audit log
+
+============================================================
+15. OWNER TREASURY TRANSFER
+============================================================
+
+Owner Telegram ID:
+
+8522783212
+
+If Owner explicitly approves a legitimate security confiscation:
+
+Create:
+
+SECURITY_CONFISCATION
+
+FROM:
+
+user wallet / security hold
+
+TO:
+
+Owner treasury
+
+Create matching immutable ledger entries.
+
+Fields:
+
+userId
+ownerId
+securityEventId
+securityHoldId
+amount
+asset
+reason
+approvedAt
+approvedBy
+referenceId
+
+Never perform hidden balance mutation.
+
+============================================================
+16. TAP ANTI-BOT SYSTEM
+============================================================
+
+Tap processing MUST be server-authoritative.
+
+Every tap batch contains:
+
+tapBatchId
+sessionId
+deviceId
+sequence
+clientTimestamp
+requestId
+
+Server validates:
+
+1. Telegram identity
+2. session
+3. device
+4. securityStatus
+5. securityVersion
+6. requestId
+7. tapBatchId
+8. sequence
+9. rate limit
+10. energy
+11. server timing
+12. risk score
+
+Only then process reward.
+
+============================================================
+17. TAP IDEMPOTENCY
+============================================================
+
+Unique key:
+
+telegramUserId + tapBatchId
+
+If the same request arrives again:
+
+return original result.
+
+Do not reward twice.
+
+Retries must reuse the same tapBatchId.
+
+============================================================
+18. TAP SEQUENCE
+============================================================
+
+Maintain server-side tap sequence.
+
+Example:
+
+1001
+1002
+1003
+1004
+
+Reject:
+
+- old sequence
+- duplicate sequence
+- impossible sequence jump
+- replayed sequence
+
+Allow small controlled gaps only if the batching protocol requires them.
+
+Never trust client sequence as authoritative.
+
+============================================================
+19. SERVER TIME
+============================================================
+
+Do not trust client timestamp for financial decisions.
+
+Use server timestamp.
+
+Reject requests that are outside the allowed time window.
+
+Prevent:
+
+- future-dated requests
+- replayed old requests
+- timestamp manipulation
+
+============================================================
+20. REQUEST ID
+============================================================
+
+Every sensitive request must contain unique:
+
+requestId
+
+Store processed request IDs temporarily or permanently depending on operation.
+
+If the same requestId is submitted twice:
+
+return the original result.
+
+Never process financial effect twice.
+
+============================================================
+21. RATE LIMITING
+============================================================
+
+Create endpoint-specific server-side rate limits.
+
+Examples:
+
+/api/tap
+/api/bonus
+/api/referral
+/api/conversion
+/api/trade
+/api/withdrawal
+/api/vip
+/api/device
+/api/session
+
+Rate limits must be based on multiple dimensions:
+
+- Telegram user
+- device
+- session
+- IP where appropriate
+- endpoint
+- time window
+
+Do not use IP alone because mobile networks and shared networks can cause false positives.
+
+============================================================
+22. ADAPTIVE RATE LIMITING
+============================================================
+
+Normal activity:
+
+allow normal usage.
+
+Suspicious activity:
+
+progressively reduce request allowance.
+
+High risk:
+
+temporarily block sensitive APIs.
+
+Extreme abuse:
+
+security restriction.
+
+Never permanently ban solely from one rate-limit violation.
+
+============================================================
+23. AUTOMATION RISK ENGINE
+============================================================
+
+Create:
+
+securityRiskScore
+
+Range:
+
+0–100
+
+Signals may include:
+
+- impossible request frequency
+- repeated identical intervals
+- replay attempts
+- duplicate requests
+- invalid signatures
+- invalid nonce
+- device mismatch
+- sequence violations
+- excessive API calls
+- abnormal session creation
+- repeated failed authentication
+- suspicious reward patterns
+- simultaneous device attempts
+- impossible activity timing
+
+Example thresholds:
+
+0–29:
+NORMAL
+
+30–49:
+MONITOR
+
+50–69:
+ELEVATED
+
+70–84:
+RESTRICTED_SENSITIVE_ACTIONS
+
+85–100:
+HIGH_RISK_SECURITY_HOLD
+
+Thresholds must be configurable by Owner.
+
+Do not expose exact scoring logic to normal users.
+
+============================================================
+24. BEHAVIORAL ANTI-AUTOMATION
+============================================================
+
+Analyze patterns rather than relying on one signal.
+
+Possible signals:
+
+- perfectly regular intervals
+- impossible tap bursts
+- identical request spacing
+- repeated identical payload patterns
+- high-frequency API calls
+- abnormal session churn
+- abnormal reward accumulation
+- repeated failed challenges
+
+Do not attempt to identify or fingerprint a person.
+
+Use the signals only for application security.
+
+============================================================
+25. TERMUX / PYTHON FARMING DEFENSE
+============================================================
+
+Assume an attacker may attempt:
+
+- Python requests
+- Termux scripts
+- HTTP replay
+- modified JavaScript
+- API automation
+- request duplication
+- parallel requests
+
+Therefore:
+
+The client must never directly award:
+
+XCOIN
+
+XC
+
+energy
+
+bonus
+
+referral reward
+
+ad reward
+
+VIP status
+
+Server must calculate these values.
+
+============================================================
+26. SERVER-SIDE REWARD CALCULATION
+============================================================
+
+Tap reward:
+
+SERVER determines.
+
+Energy:
+
+SERVER determines.
+
+Tap Power:
+
+SERVER determines.
+
+Upgrade price:
+
+SERVER determines.
+
+Bonus reward:
+
+SERVER determines.
+
+Referral reward:
+
+SERVER determines.
+
+Ad reward:
+
+SERVER determines.
+
+Never accept:
+
+rewardAmount
+
+from the client as authoritative.
+
+============================================================
+27. AD REWARD SECURITY
+============================================================
+
+Do not trust:
+
+"I watched an ad"
+
+from the browser.
+
+Require validated ad completion signal where supported.
+
+Apply:
+
+- user/session validation
+- device validation
+- cooldown
+- daily limit
+- idempotency
+- reward ledger
+
+One ad completion = one reward.
+
+============================================================
+28. REFERRAL ABUSE DEFENSE
+============================================================
+
+Prevent:
+
+- self referral
+- repeated referral
+- referral loops
+- duplicate accounts used solely for rewards
+- repeated device farming
+- suspicious referral clusters
+
+Referral reward becomes valid only after server-defined qualification.
+
+============================================================
+29. BONUS SECURITY
+============================================================
+
+Every bonus claim:
+
+claimId
+
+unique.
+
+Use transaction.
+
+Prevent:
+
+duplicate claim
+
+race condition
+
+replay
+
+client-side reward manipulation.
+
+============================================================
+30. UPGRADE SECURITY
+============================================================
+
+Upgrade purchase:
+
+Server reads current price from trusted config.
+
+Server verifies balance.
+
+Server transaction:
+
+balance decrease
++
+upgrade level increase
++
+ledger entry
+
+All atomic.
+
+Never accept client-provided price.
+
+============================================================
+31. XC/XCOIN CONVERSION SECURITY
+============================================================
+
+Server reads conversion rate.
+
+Validate:
+
+XC balance.
+
+Atomic transaction:
+
+XC decrease
++
+XCOIN increase
++
+ledger entry.
+
+Prevent double conversion.
+
+============================================================
+32. TRADING SECURITY
+============================================================
+
+Client cannot determine:
+
+- trade result
+- payout
+- settlement
+- market outcome
+
+Server controls:
+
+- trade creation
+- entry
+- expiry
+- settlement
+- payout
+- fees
+
+Validate:
+
+device
+session
+securityStatus
+balance
+amount
+expiry
+requestId
+
+Never manipulate outcome based on:
+
+- VIP
+- user balance
+- bet amount
+- previous wins
+- previous losses
+- majority side
+
+============================================================
+33. WITHDRAWAL SECURITY
+============================================================
+
+Withdrawal requires:
+
+1. Valid Telegram session.
+2. Trusted device.
+3. Active security status.
+4. Sufficient available balance.
+5. Minimum amount.
+6. Valid destination.
+7. Fee calculation.
+8. Atomic balance reservation.
+9. Withdrawal record.
+10. Audit record.
+
+High-risk/new-device accounts:
+
+withdrawal remains blocked until security review.
+
+============================================================
+34. WITHDRAWAL COOLING PERIOD
+============================================================
+
+After:
+
+- device replacement
+- security recovery
+- major security change
+
+optionally enforce configurable withdrawal cooling period.
+
+Example:
+
+24h / 48h / 72h
+
+Owner configurable.
+
+This protects against account takeover.
+
+============================================================
+35. VIP PAYMENT SECURITY
+============================================================
+
+VIP payment order must contain:
+
+paymentOrderId
+userId
+planId
+amount
+asset
+network
+destination
+status
+txid
+createdAt
+
+Prevent:
+
+- duplicate TXID
+- duplicate activation
+- wrong network
+- wrong destination
+- wrong amount
+- replay
+
+VIP activation must be atomic.
+
+============================================================
+36. ADMIN SECURITY
+============================================================
+
+Normal Admin must NEVER be able to:
+
+- change Owner ID
+- become Owner
+- grant itself Owner permissions
+- modify Owner security
+- delete Owner
+- disable Owner security
+- bypass audit
+- directly manipulate treasury without permission
+
+Server-side RBAC is mandatory.
+
+============================================================
+37. ADMIN KEY SECURITY
+============================================================
+
+Admin keys:
+
+- generate cryptographically random secret
+- display plaintext only once
+- store only secure hash
+- expiration
+- revoke
+- disable
+- reset
+- session invalidation
+
+Never store plaintext Admin Keys.
+
+============================================================
+38. OWNER AUTHENTICATION
+============================================================
+
+Owner:
+
+Telegram ID = 8522783212
+
+Owner-sensitive actions require:
+
+- verified Telegram identity
+- secure Owner session
+- step-up authentication
+- optional biometric
+- optional additional secret/MFA
+
+Do not trust a client-submitted Owner ID.
+
+============================================================
+39. ADMIN SESSION SECURITY
+============================================================
+
+Admin sessions:
+
+short-lived
+
+rotating
+
+revocable
+
+securityVersion aware
+
+Track:
+
+sessionId
+adminId
+createdAt
+lastActivity
+expiresAt
+device
+status
+
+============================================================
+40. FORCE LOGOUT
+============================================================
+
+Owner can:
+
+- force logout user
+- force logout device
+- force logout all sessions
+- revoke device
+- revoke admin sessions
+
+Increase securityVersion.
+
+============================================================
+41. FIREBASE APP CHECK
+============================================================
+
+Where supported and compatible with the application:
+
+Enable Firebase App Check / appropriate attestation.
+
+Use it as an additional layer.
+
+Do NOT treat App Check as the only security mechanism.
+
+Server authorization remains mandatory.
+
+============================================================
+42. FIRESTORE SECURITY
+============================================================
+
+Client cannot directly modify:
+
+balances
+ledger
+trades settlement
+withdrawals completion
+VIP status
+device binding
+security status
+security holds
+risk score
+admin roles
+permissions
+treasury
+revenue
+
+Use server-authorized writes.
+
+============================================================
+43. FINANCIAL LEDGER
+============================================================
+
+Every balance-changing event must have a ledger entry.
+
+Ledger must contain:
+
+transactionId
+userId
+asset
+amount
+type
+direction
+referenceId
+createdAt
+serverSequence
+status
+
+Types include:
+
+TAP_REWARD
+BONUS_REWARD
+REFERRAL_REWARD
+AD_REWARD
+UPGRADE
+TRADE_ENTRY
+TRADE_PAYOUT
+TRADING_FEE
+CONVERSION
+WITHDRAWAL
+WITHDRAWAL_FEE
+VIP_PAYMENT
+PROMOTION
+ADMIN_ADJUSTMENT
+SECURITY_CONFISCATION
+
+============================================================
+44. BALANCE CONSISTENCY
+============================================================
+
+Do not rely on frontend calculations.
+
+Server verifies balance against authoritative accounting state.
+
+Detect:
+
+- negative balance
+- duplicate ledger
+- missing ledger
+- unexpected balance change
+- inconsistent transaction totals
+
+Create security event if detected.
+
+============================================================
+45. SECURITY EVENTS
+============================================================
+
+Collection:
+
+securityEvents
+
+Types:
+
+FIRST_DEVICE_REGISTERED
+MULTI_DEVICE_DETECTED
+DEVICE_SIGNATURE_FAILED
+CHALLENGE_FAILED
+NONCE_REPLAY
+REQUEST_REPLAY
+SEQUENCE_VIOLATION
+RATE_LIMIT_TRIGGERED
+AUTOMATION_DETECTED
+SUSPICIOUS_ACTIVITY
+SESSION_HIJACK_ATTEMPT
+ACCOUNT_RESTRICTED
+FUNDS_FROZEN
+FUNDS_RELEASED
+FUNDS_CONFISCATED
+DEVICE_REVOKED
+DEVICE_REPLACED
+WITHDRAWAL_BLOCKED
+ADMIN_LOGIN_FAILED
+ADMIN_SESSION_REVOKED
+
+============================================================
+46. SECURITY ALERTS
+============================================================
+
+Owner Security Center must show HIGH-risk events immediately.
+
+Display:
+
+- event type
+- user
+- device
+- trusted device
+- time
+- risk score
+- affected asset
+- frozen amount
+- current status
+
+Do not expose sensitive internals to unauthorized admins.
+
+============================================================
+47. OWNER SECURITY CENTER
+============================================================
+
+Create:
+
+ADMIN → SECURITY CENTER
+
+Sections:
+
+Active Threats
+Multi-Device
+Automation Detection
+Frozen Funds
+Device Bindings
+Active Sessions
+Failed Authentication
+Rate Limits
+Security Events
+Audit Logs
+
+Actions:
+
+Review
+Restrict
+Release
+Freeze
+Release Funds
+Revoke Device
+Replace Device
+Force Logout
+
+Sensitive actions require confirmation and reason.
+
+============================================================
+48. DEVICE CHANGE RECOVERY
+============================================================
+
+Legitimate user gets a secure recovery path.
+
+If old device is available:
+
+Old Device:
+Approve New Device
+
+New Device:
+Request Device Change
+
+If old device unavailable:
+
+require stronger account verification / Owner support.
+
+Never allow:
+
+Telegram ID alone
+
+to replace a trusted device.
+
+============================================================
+49. DEVICE REVOCATION
+============================================================
+
+When Owner revokes a device:
+
+- mark device REVOKED
+- invalidate sessions
+- increase securityVersion
+- invalidate challenges
+- block sensitive operations
+- create audit log
+
+============================================================
+50. NEW DEVICE APPROVAL
+============================================================
+
+New device can only become TRUSTED after:
+
+- valid Telegram identity
+- valid recovery flow
+- old-device approval OR Owner approval
+- cryptographic device registration
+- optional biometric
+- security checks
+
+Never auto-approve merely because the Telegram ID matches.
+
+============================================================
+51. IP / NETWORK SIGNALS
+============================================================
+
+IP may be used as a risk signal.
+
+Do NOT use IP as the identity.
+
+Do NOT permanently ban because of:
+
+- mobile IP changes
+- carrier NAT
+- VPN
+- Wi-Fi change
+- public networks
+
+============================================================
+52. GEOLOCATION
+============================================================
+
+Do not require precise GPS location for normal operation.
+
+If approximate network region is available, it may be treated only as a security signal.
+
+Never make account ownership decisions solely from location.
+
+============================================================
+53. CLIENT INTEGRITY
+============================================================
+
+Assume the client can be modified.
+
+Never depend on:
+
+- hidden buttons
+- disabled buttons
+- minified JavaScript
+- frontend role checks
+- frontend balance checks
+
+All important controls must exist on the server.
+
+============================================================
+54. API HARDENING
+============================================================
+
+For every protected API:
+
+1. Parse request.
+2. Validate schema.
+3. Authenticate.
+4. Validate Telegram identity.
+5. Validate session.
+6. Validate device.
+7. Validate securityVersion.
+8. Validate challenge if required.
+9. Validate nonce.
+10. Validate requestId.
+11. Validate rate limit.
+12. Validate business rules.
+13. Perform transaction.
+14. Write ledger.
+15. Write audit/security event.
+
+============================================================
+55. INPUT VALIDATION
+============================================================
+
+Use strict schema validation.
+
+Reject:
+
+- unexpected fields
+- invalid types
+- negative amounts
+- NaN
+- Infinity
+- malformed IDs
+- oversized payloads
+- invalid enums
+- invalid timestamps
+
+============================================================
+56. CSRF / REQUEST PROTECTION
+============================================================
+
+Protect authenticated state-changing endpoints against:
+
+- CSRF
+- request replay
+- origin abuse
+- unauthorized cross-context requests
+
+Use appropriate secure cookies/tokens and server-side validation.
+
+============================================================
+57. SECRET MANAGEMENT
+============================================================
+
+Never expose:
+
+TELEGRAM_BOT_TOKEN
+GEMINI_API_KEY
+Admin secret
+server credentials
+private signing keys
+
+Never prefix server secrets with:
+
+NEXT_PUBLIC_
+
+Use environment variables / secure secret storage.
+
+============================================================
+58. SECURITY LOGGING
+============================================================
+
+Log security events without unnecessarily storing sensitive personal information.
+
+Never log:
+
+private keys
+biometric data
+passwords
+Admin plaintext keys
+full authentication secrets
+
+============================================================
+59. AUTOMATED SECURITY RESPONSE
+============================================================
+
+Risk response:
+
+LOW:
+normal operation
+
+MEDIUM:
+additional monitoring
+
+HIGH:
+block sensitive operations
+
+CRITICAL:
+invalidate session
+freeze relevant funds
+restrict account
+notify Owner
+
+Never automatically confiscate funds based solely on automated risk score.
+
+============================================================
+60. SECURITY RATE LIMIT RESPONSE
+============================================================
+
+When rate limit triggers:
+
+Do not immediately permanently ban.
+
+Use progressive response:
+
+1. temporary cooldown
+2. additional verification
+3. sensitive-action restriction
+4. security review
+
+============================================================
+61. ANTI-REPLAY TEST
+============================================================
+
+Test:
+
+Send valid request once.
+
+Send identical request again.
+
+Expected:
+
+second request produces no additional financial effect.
+
+============================================================
+62. MULTI-DEVICE TEST
+============================================================
+
+Device A:
+
+Register.
+
+Expected:
+
+TRUSTED.
+
+Device B:
+
+Same Telegram ID.
+
+Expected:
+
+MULTI_DEVICE_DETECTED
+
+Device B:
+
+RESTRICTED.
+
+Device A:
+
+continues only if security policy allows.
+
+============================================================
+63. PYTHON AUTOMATION TEST
+============================================================
+
+Simulate rapid automated API requests.
+
+Expected:
+
+- rate limits
+- sequence validation
+- idempotency
+- risk scoring
+- eventual restriction if behavior remains abusive
+
+Do not depend on detecting the word "Python" or "Termux".
+
+Detect behavior and authorization failure instead.
+
+============================================================
+64. DUPLICATE TAP TEST
+============================================================
+
+Send same:
+
+tapBatchId
+
+10 times.
+
+Expected:
+
+1 reward only.
+
+============================================================
+65. PARALLEL REQUEST TEST
+============================================================
+
+Send multiple simultaneous requests attempting to spend the same balance.
+
+Expected:
+
+Firestore/server transaction allows only valid atomic state transition.
+
+Never allow negative balance.
+
+============================================================
+66. WITHDRAWAL RACE TEST
+============================================================
+
+Send multiple identical withdrawals simultaneously.
+
+Expected:
+
+only one valid balance reservation.
+
+============================================================
+67. SECURITY RECOVERY TEST
+============================================================
+
+Old device:
+
+approve new device.
+
+New device:
+
+becomes trusted.
+
+Old device:
+
+becomes replaced.
+
+All old sessions:
+
+invalidated.
+
+============================================================
+68. OWNER CONFISCATION TEST
+============================================================
+
+System detects suspicious device.
+
+Expected:
+
+FREEZE.
+
+NOT automatic Owner transfer.
+
+Owner explicitly approves.
+
+Expected:
+
+ledger transfer
+
++
+security event
+
++
+audit log.
+
+============================================================
+69. EMPTY / SAFE STATES
+============================================================
+
+If security information does not exist:
+
+do not fabricate it.
+
+If no trusted device:
+
+register securely.
+
+If no security events:
+
+"No security events."
+
+If no frozen funds:
+
+"No funds currently frozen."
+
+============================================================
+70. FINAL SECURITY ARCHITECTURE
+============================================================
+
+Use this architecture:
+
+Telegram Identity
+        ↓
+Server Validation
+        ↓
+Trusted Device
+        ↓
+Cryptographic Device Key
+        ↓
+Biometric / Step-Up Authentication
+        ↓
+Secure Session
+        ↓
+Security Version
+        ↓
+Challenge / Nonce
+        ↓
+Request Signature
+        ↓
+Request ID
+        ↓
+Sequence Validation
+        ↓
+Replay Protection
+        ↓
+Rate Limiting
+        ↓
+Automation Risk Engine
+        ↓
+Business Rule Validation
+        ↓
+Atomic Server Transaction
+        ↓
+Financial Ledger
+        ↓
+Audit / Security Event
+
+============================================================
+71. FINAL SECURITY RULE
+============================================================
+
+No single security signal should control everything.
+
+Combine:
+
+Telegram authentication
++
+device binding
++
+cryptographic proof
++
+session validation
++
+nonce
++
+sequence
++
+idempotency
++
+rate limiting
++
+behavior analysis
++
+server-side accounting
++
+audit logs
+
+This layered architecture is mandatory.
+
+============================================================
+72. FINAL IMPLEMENTATION REQUIREMENT
+============================================================
+
+Integrate this security architecture into:
+
+- Telegram authentication
+- user creation
+- Tap
+- Upgrades
+- Bonus
+- Ads
+- Referrals
+- Friends
+- Trading
+- XC/XCOIN conversion
+- Wallet
+- Withdrawals
+- VIP
+- Promotions
+- Admin
+- Owner
+- Treasury
+- Revenue
+- AI prediction
+- all APIs
+
+Every sensitive endpoint must perform security validation before executing.
+
+If:
+
+securityStatus != ACTIVE
+
+then reject balance-changing operations.
+
+If:
+
+deviceStatus != TRUSTED
+
+then reject financial operations.
+
+If:
+
+sessionStatus != ACTIVE
+
+then reject authenticated operations.
+
+If:
+
+securityVersion != session.securityVersion
+
+then reject and require re-authentication.
+
+If:
+
+challenge invalid
+
+then reject.
+
+If:
+
+requestId already processed
+
+then return original result without repeating financial effect.
+
+If:
+
+risk becomes CRITICAL
+
+then invalidate session and initiate security hold.
+
+============================================================
+73. FINAL BUILD RULE
+============================================================
+
+Do not create a fake security UI.
+
+Implement real backend enforcement.
+
+Do not merely show:
+
+"Device detected"
+
+while allowing API requests.
+
+Every restriction must be enforced server-side.
+
+Every financial action must be atomic.
+
+Every security-sensitive action must be auditable.
+
+The final X COIN system must prioritize:
+
+security
++
+account recovery
++
+financial integrity
++
+anti-automation
++
+server authority
++
+auditability
+
+over cosmetic frontend restrictions.
+
+END OF X COIN MAXIMUM SECURITY MASTER PROMPT
+
+
+X COIN — VIP PURCHASE + TRANSACTION VERIFICATION
+
+PRODUCTION-READY ADMIN-CONFIGURED VIP PAYMENT SYSTEM
+
+Implement a complete VIP purchase system connected to the existing
+X COIN VIP and AI Prediction architecture.
+
+IMPORTANT:
+
+Do NOT create fake payment confirmations.
+
+Do NOT automatically activate VIP merely because a user submitted a TXID.
+
+VIP becomes ACTIVE only after the transaction is verified according to
+the configured verification workflow.
+
+==================================================
+
+1. VIP PURCHASE FLOW
+   ==================================================
+
+User opens:
+
+VIP
+
+Show all enabled VIP plans from the real database.
+
+Example plans:
+
+Standard — $1
+Premium — $3
+Pro — $5
+Elite — $10
+Master — $25
+Diamond — $50
+Legend — $100
+
+These are examples.
+
+The actual plans, prices, benefits and availability must come from
+Admin configuration.
+
+User flow:
+
+VIP
+↓
+Select Plan
+↓
+Payment Method
+↓
+Payment Network
+↓
+Payment Address
+↓
+Amount
+↓
+QR Code
+↓
+Transaction ID / TXID
+↓
+Submit Payment
+↓
+PENDING
+↓
+Admin Verification
+↓
+APPROVED / REJECTED
+↓
+VIP Activation
+
+==================================================
+2. ADMIN VIP PLAN CONFIGURATION
+
+Admin:
+
+ADMIN
+→
+VIP
+→
+Plans
+
+Admin can:
+
+Create Plan
+Edit Plan
+Disable Plan
+Enable Plan
+Archive Plan
+
+Fields:
+
+planId
+name
+description
+priceUSD
+durationDays
+enabled
+sortOrder
+
+Benefits:
+
+aiPrediction
+predictionLimit
+advancedAnalytics
+prioritySupport
+higherLimits
+badge
+otherFeatures
+
+Example:
+
+{
+"planId": "premium",
+"name": "Premium",
+"priceUSD": 3,
+"durationDays": 30,
+"enabled": true
+}
+
+Never hardcode VIP prices in frontend.
+
+==================================================
+3. PAYMENT CONFIGURATION
+
+Admin:
+
+ADMIN
+→
+VIP
+→
+Payment Settings
+
+Admin can configure:
+
+paymentEnabled
+
+acceptedAssets
+
+acceptedNetworks
+
+walletAddresses
+
+minimumAmount
+
+paymentInstructions
+
+QR code
+
+paymentTimeout
+
+manualVerificationEnabled
+
+automaticVerificationEnabled
+
+confirmationRequirement
+
+Example assets:
+
+USDT
+TON
+
+Do not enable any asset/network unless configured by Admin.
+
+==================================================
+4. PAYMENT METHOD
+
+Example:
+
+USDT
+
+Network:
+
+TRC20
+
+Payment Address:
+
+ADMIN-CONFIGURED-WALLET
+
+Required UI:
+
+---
+
+Premium VIP
+
+Price:
+$3
+
+Pay With:
+USDT
+
+Network:
+TRC20
+
+Amount:
+3 USDT
+
+Wallet Address:
+XXXXXXXX
+
+[ COPY ADDRESS ]
+
+[ QR CODE ]
+
+After payment:
+
+Transaction ID / TXID
+
+[ ENTER TXID ]
+
+[ SUBMIT PAYMENT ]
+
+---
+
+Never display placeholder wallet addresses in production.
+
+If payment configuration is missing:
+
+"Payment is currently unavailable."
+
+==================================================
+5. ORDER CREATION
+
+When user selects a VIP plan:
+
+Create:
+
+paymentOrders/{orderId}
+
+Fields:
+
+orderId
+userId
+telegramUserId
+planId
+planName
+priceUSD
+asset
+network
+expectedAmount
+paymentAddress
+status
+createdAt
+expiresAt
+txid
+submittedAt
+verifiedAt
+verifiedBy
+rejectionReason
+
+Initial:
+
+status = PENDING
+
+Do not activate VIP at order creation.
+
+==================================================
+6. UNIQUE ORDER
+
+Each purchase attempt gets a unique:
+
+orderId
+
+Example:
+
+VIP-20260924-XXXXXXXX
+
+Never reuse an old order ID.
+
+==================================================
+7. PAYMENT EXPIRATION
+
+Admin configurable:
+
+paymentTimeoutMinutes
+
+Example:
+
+30 minutes
+
+After expiration:
+
+status = EXPIRED
+
+Expired orders cannot be approved unless explicitly handled by
+authorized Admin according to the configured recovery workflow.
+
+==================================================
+8. TXID SUBMISSION
+
+User submits:
+
+TXID
+
+Server validates:
+
+TXID format
+order status
+order ownership
+duplicate TXID
+payment method
+network
+expiry
+rate limit
+
+Never trust:
+
+userId
+amount
+network
+wallet address
+
+from the client.
+
+Load these values from the server-side order.
+
+==================================================
+9. DUPLICATE TXID PROTECTION
+
+The same TXID must NOT be usable for:
+
+multiple VIP orders
+multiple users
+multiple approvals
+
+Create a unique transaction index:
+
+paymentTransactions/{txidHash}
+
+Store:
+
+txidHash
+orderId
+userId
+network
+asset
+status
+createdAt
+
+If TXID already exists:
+
+reject submission.
+
+==================================================
+10. TRANSACTION VERIFICATION
+
+Verification must confirm, where supported by the selected network/provider:
+
+TXID exists
+transaction succeeded
+correct network
+correct asset
+correct destination address
+correct amount
+appropriate confirmation status
+transaction is not already used
+
+For manual verification:
+
+Admin checks the transaction using the configured blockchain explorer
+or payment provider and records the verification result.
+
+Do not claim automatic blockchain verification unless a real provider/API
+is actually configured.
+
+==================================================
+11. AUTOMATIC VERIFICATION
+
+If Admin enables:
+
+automaticVerificationEnabled = true
+
+use a real supported blockchain/payment provider.
+
+Provider configuration must be stored securely on the server.
+
+Never expose:
+
+provider API keys
+private keys
+wallet private keys
+seed phrases
+
+to the frontend.
+
+If provider is unavailable:
+
+fall back to:
+
+UNDER_REVIEW
+
+Do not automatically approve.
+
+==================================================
+12. MANUAL VERIFICATION
+
+Default safe workflow:
+
+PENDING
+↓
+UNDER_REVIEW
+↓
+APPROVED
+or
+REJECTED
+
+Admin opens:
+
+ADMIN
+→
+Payments
+→
+VIP Orders
+
+Show:
+
+Order ID
+User
+VIP Plan
+Expected Amount
+Asset
+Network
+Destination
+TXID
+Submitted Time
+Status
+
+Actions:
+
+VERIFY
+APPROVE
+REJECT
+
+==================================================
+13. APPROVAL RULE
+
+VIP activation occurs ONLY after:
+
+payment verification succeeds.
+
+When approved:
+
+paymentOrder.status = APPROVED
+
+Then create/update:
+
+users/{telegramUserId}
+
+VIP fields:
+
+vipTier
+vipStatus
+vipStartedAt
+vipExpiresAt
+vipPaymentOrderId
+
+Example:
+
+vipStatus = ACTIVE
+
+vipExpiresAt =
+vipStartedAt + durationDays
+
+Use server timestamp.
+
+==================================================
+14. IDEMPOTENT APPROVAL
+
+Approving the same payment twice must NOT:
+
+extend VIP twice
+create duplicate revenue
+create duplicate ledger entries
+activate duplicate benefits
+
+Use:
+
+paymentOrderId
+
+as an idempotency key.
+
+If already APPROVED:
+
+return existing activation result.
+
+==================================================
+15. REJECTION
+
+Admin can reject with reason:
+
+INVALID_TXID
+WRONG_NETWORK
+WRONG_ADDRESS
+INSUFFICIENT_AMOUNT
+DUPLICATE_TRANSACTION
+EXPIRED_ORDER
+TRANSACTION_FAILED
+TRANSACTION_NOT_FOUND
+OTHER
+
+Store:
+
+rejectionReason
+rejectedBy
+rejectedAt
+
+User sees:
+
+"Payment verification failed."
+
+and the appropriate safe reason.
+
+==================================================
+16. VIP REVENUE LEDGER
+
+When payment is APPROVED:
+
+Create:
+
+revenueLedger entry
+
+Example:
+
+{
+"type": "VIP_REVENUE",
+"orderId": "...",
+"userId": "...",
+"planId": "...",
+"asset": "USDT",
+"amount": 3,
+"status": "CONFIRMED",
+"createdAt": "SERVER_TIMESTAMP"
+}
+
+Do NOT classify a pending payment as revenue.
+
+Only verified/approved payments enter confirmed revenue.
+
+==================================================
+17. PAYMENT LIABILITY VS REVENUE
+
+Keep separate:
+
+pending payments
+verified payments
+rejected payments
+refunded payments
+platform revenue
+
+Do not mix user funds/liabilities with platform revenue.
+
+==================================================
+18. ADMIN PAYMENT DASHBOARD
+
+Create:
+
+ADMIN
+→
+Payments
+→
+VIP Payments
+
+Dashboard:
+
+Pending
+Under Review
+Approved
+Rejected
+Expired
+
+Statistics:
+
+Today's Orders
+Today's Approved Revenue
+Pending Amount
+Approved Orders
+Rejected Orders
+Average Verification Time
+
+All statistics must come from real database records.
+
+No fake statistics.
+
+==================================================
+19. ADMIN SEARCH
+
+Allow search by:
+
+Order ID
+Telegram ID
+Username
+TXID
+VIP plan
+Status
+Network
+
+Filters:
+
+PENDING
+UNDER_REVIEW
+APPROVED
+REJECTED
+EXPIRED
+
+==================================================
+20. ADMIN PERMISSIONS
+
+Use existing RBAC.
+
+Permissions:
+
+payments.view
+payments.review
+payments.approve
+payments.reject
+payments.configure
+
+vip.view
+vip.configure
+
+Only users with:
+
+payments.approve
+
+can approve VIP payments.
+
+Owner retains full control.
+
+==================================================
+21. APPROVAL AUDIT LOG
+
+Every approval/rejection must create:
+
+auditLogs
+
+Fields:
+
+auditLogId
+adminId
+adminTelegramId
+role
+action
+orderId
+userId
+oldStatus
+newStatus
+reason
+timestamp
+sessionId
+
+Example:
+
+action:
+VIP_PAYMENT_APPROVED
+
+==================================================
+22. USER PAYMENT HISTORY
+
+User:
+
+VIP
+→
+My Payments
+
+Show:
+
+Order ID
+Plan
+Amount
+Network
+TXID
+Status
+Created
+Verified
+
+Statuses:
+
+PENDING
+UNDER REVIEW
+APPROVED
+REJECTED
+EXPIRED
+
+==================================================
+23. VIP ACTIVATION HISTORY
+
+Store:
+
+vipHistory
+
+Fields:
+
+historyId
+userId
+planId
+paymentOrderId
+startedAt
+expiresAt
+activatedBy
+activationType
+
+Activation type:
+
+PAYMENT
+ADMIN_GRANT
+RENEWAL
+
+Never delete historical activation records.
+
+==================================================
+24. VIP RENEWAL
+
+If user already has active VIP and purchases another plan:
+
+Admin-configurable behavior:
+
+REPLACE
+EXTEND
+UPGRADE
+
+Do not silently overwrite existing VIP time.
+
+Example:
+
+Current:
+Premium expires in 10 days
+
+New:
+Premium 30 days
+
+If configured:
+
+EXTEND
+
+New expiry:
+
+currentExpiry + 30 days
+
+Store this in VIP history.
+
+==================================================
+25. UPGRADE
+
+If upgrading:
+
+Premium → Pro
+
+Admin can configure:
+
+allowUpgrade
+
+upgradePriceMode:
+
+FULL_PRICE
+DIFFERENCE
+CUSTOM
+
+The server calculates the actual amount.
+
+Never trust client-calculated upgrade price.
+
+==================================================
+26. PAYMENT CONFIG UI
+
+Admin page:
+
+VIP Payment Configuration
+
+---
+
+Payment Status:
+ON / OFF
+
+Asset:
+USDT
+
+Network:
+TRC20
+
+Wallet Address:
+[................]
+
+Minimum Payment:
+[................]
+
+Payment Timeout:
+[30] minutes
+
+Manual Verification:
+ON
+
+Automatic Verification:
+OFF
+
+Confirmation Requirement:
+[CONFIG]
+
+Instructions:
+[TEXT]
+
+QR Code:
+[UPLOAD/URL]
+
+[ SAVE CONFIG ]
+
+---
+
+All changes audited.
+
+==================================================
+27. QR CODE
+
+Generate/display QR from the actual configured payment address
+and payment parameters.
+
+Never hardcode QR.
+
+If payment configuration changes:
+
+new QR must represent the new configuration.
+
+==================================================
+28. SECURITY
+
+Never allow client to modify:
+
+paymentAddress
+expectedAmount
+priceUSD
+VIP tier
+payment status
+verification status
+verifiedAt
+verifiedBy
+revenue status
+VIP activation
+
+All must be server-authoritative.
+
+==================================================
+29. FIRESTORE SECURITY
+
+Users may:
+
+create their own payment order
+submit their own TXID
+read their own payment history
+
+Users may NOT:
+
+approve orders
+change status
+change amount
+change destination
+activate VIP
+modify revenueLedger
+modify verification records
+
+Admin actions must go through secure backend authorization.
+
+==================================================
+30. TRANSACTION VERIFICATION PROVIDER
+
+Create an abstraction:
+
+PaymentVerificationProvider
+
+Methods:
+
+verifyTransaction()
+getTransactionStatus()
+getConfirmations()
+
+This allows future integration with supported blockchain/payment APIs
+without rewriting the VIP system.
+
+Example providers can be added later.
+
+Do not pretend a provider is connected when it is not.
+
+==================================================
+31. VERIFICATION RESULT
+
+Provider/manual verification should return structured data:
+
+{
+verified,
+txid,
+network,
+asset,
+amount,
+destination,
+confirmations,
+status,
+provider,
+checkedAt
+}
+
+Server compares this against the payment order.
+
+Required matches:
+
+network
+asset
+destination
+amount
+transaction status
+
+==================================================
+32. PARTIAL PAYMENT
+
+If expected:
+
+3 USDT
+
+but verified amount is:
+
+2 USDT
+
+do NOT automatically activate VIP.
+
+Status:
+
+UNDER_REVIEW
+
+Admin can decide according to configured policy.
+
+==================================================
+33. OVERPAYMENT
+
+If verified amount is greater than expected:
+
+do not automatically grant extra VIP days.
+
+Mark:
+
+OVERPAYMENT_REVIEW
+
+and require authorized Admin action according to policy.
+
+==================================================
+34. WRONG NETWORK
+
+If user sends USDT through an unsupported network:
+
+do NOT automatically approve.
+
+Example:
+
+Expected:
+USDT TRC20
+
+Received:
+USDT ERC20
+
+Result:
+
+WRONG_NETWORK
+
+UNDER_REVIEW / REJECTED
+
+according to Admin policy.
+
+==================================================
+35. WRONG DESTINATION
+
+If TXID points to a different destination:
+
+verification fails.
+
+Never activate VIP.
+
+==================================================
+36. PAYMENT WEBHOOKS
+
+If the provider supports webhooks:
+
+verify webhook signature.
+
+Never trust unsigned webhook data.
+
+Use:
+
+webhookEventId
+
+for idempotency.
+
+Duplicate webhook:
+
+ignore safely.
+
+==================================================
+37. PRIVATE KEYS
+
+X COIN must NEVER request or store:
+
+seed phrase
+private key
+user wallet password
+
+The VIP payment system only needs the configured receiving address
+and transaction verification data.
+
+==================================================
+38. ADMIN OWNER
+
+Owner Telegram ID:
+
+8522783212
+
+Owner can:
+
+create VIP plans
+edit VIP prices
+enable/disable plans
+configure payment assets
+configure networks
+configure wallet addresses
+configure payment timeout
+configure verification mode
+view all orders
+approve/reject
+view revenue
+view audit logs
+
+Normal admins only get permissions assigned through RBAC.
+
+==================================================
+39. NOTIFICATION
+
+After payment submission:
+
+"VIP payment submitted. Waiting for verification."
+
+After approval:
+
+"VIP activated successfully."
+
+After rejection:
+
+"VIP payment could not be verified."
+
+Do not expose internal security information.
+
+==================================================
+40. VIP AI PREDICTION CONNECTION
+
+After VIP approval:
+
+aiPredictionEnabled
+
+must be determined by the actual VIP plan configuration.
+
+Example:
+
+Standard:
+AI Prediction OFF
+
+Premium:
+AI Prediction ON
+
+Pro:
+AI Prediction ON
+
+etc.
+
+Do NOT simply enable AI Prediction because the frontend says:
+
+vip=true
+
+The server checks:
+
+active VIP
++
+plan configuration
++
+expiry
++
+AI feature flag
+
+==================================================
+41. PAYMENT ERROR HANDLING
+
+Handle:
+
+payment disabled
+plan disabled
+invalid plan
+order expired
+duplicate TXID
+invalid TXID
+provider unavailable
+verification timeout
+wrong network
+wrong asset
+wrong amount
+wrong destination
+transaction failed
+already used TXID
+user restricted
+VIP already active
+
+No unhandled errors.
+
+==================================================
+42. PRODUCTION TESTS
+
+Test:
+
+[ ] User selects VIP
+[ ] Correct real price loads
+[ ] Admin can change price
+[ ] Payment address loads from Admin config
+[ ] Correct network displayed
+[ ] QR represents current config
+[ ] Order created
+[ ] Order expires correctly
+[ ] TXID submitted
+[ ] Duplicate TXID rejected
+[ ] Wrong network rejected
+[ ] Wrong destination rejected
+[ ] Wrong amount goes to review
+[ ] Failed transaction rejected
+[ ] Valid transaction approved
+[ ] VIP activates once
+[ ] Duplicate approval does not activate twice
+[ ] Revenue ledger created once
+[ ] Audit log created
+[ ] User payment history works
+[ ] Admin payment dashboard works
+[ ] RBAC works
+[ ] VIP expiry works
+[ ] AI Prediction access updates after VIP activation
+[ ] No fake payment status
+[ ] No fake VIP activation
+[ ] No client-side payment manipulation
+
+==================================================
+43. FINAL REQUIREMENT
+
+The VIP purchase system must be a real transaction-verification
+workflow, not a demo.
+
+Architecture:
+
+USER
+↓
+VIP PLAN
+↓
+PAYMENT ORDER
+↓
+CONFIGURED PAYMENT ADDRESS
+↓
+EXTERNAL PAYMENT
+↓
+TXID
+↓
+TRANSACTION VERIFICATION
+↓
+UNDER REVIEW
+↓
+ADMIN / VERIFIED PROVIDER
+↓
+APPROVED
+↓
+VIP ACTIVATION
+↓
+AI PREDICTION ACCESS
+↓
+REVENUE LEDGER
+
+No shortcut.
+
+No fake approval.
+
+No fake transaction.
+
+No client-side VIP activation.
+
+No hardcoded payment wallet.
+
+No hardcoded VIP price.
+
+No duplicate revenue.
+
+No duplicate VIP activation.
+
+==================================================
+END
+
+==================================================
+VIP DURATION / DAYS CONFIGURATION
+==================================================
+
+Every VIP plan MUST have an Admin-configurable duration.
+
+Admin fields:
+
+durationDays
+
+Example:
+
+Standard
+Price: $1
+Duration: 7 Days
+
+Premium
+Price: $3
+Duration: 30 Days
+
+Pro
+Price: $5
+Duration: 30 Days
+
+Elite
+Price: $10
+Duration: 60 Days
+
+Master
+Price: $25
+Duration: 90 Days
+
+Diamond
+Price: $50
+Duration: 180 Days
+
+Legend
+Price: $100
+Duration: 365 Days
+
+IMPORTANT:
+
+These are only example values.
+
+Admin must be able to change:
+
+Price
+Duration Days
+Benefits
+AI Prediction access
+Prediction limit
+Status
+
+==================================================
+VIP ACTIVATION
+==================================================
+
+When payment is verified:
+
+vipStartedAt = serverTimestamp
+
+vipExpiresAt =
+vipStartedAt + durationDays
+
+vipStatus = ACTIVE
+
+Example:
+
+Premium:
+durationDays = 30
+
+After approval:
+
+VIP Started:
+2026-09-24
+
+VIP Expires:
+2026-10-24
+
+==================================================
+VIP REMAINING DAYS
+==================================================
+
+Frontend must calculate/display:
+
+"29 Days Remaining"
+
+"15 Days Remaining"
+
+"1 Day Remaining"
+
+"Expired"
+
+Use SERVER TIME, not device time.
+
+==================================================
+VIP EXPIRY
+==================================================
+
+When:
+
+currentServerTime >= vipExpiresAt
+
+automatically treat:
+
+vipStatus = EXPIRED
+
+AI Prediction access must immediately stop.
+
+Premium features controlled by VIP must also stop.
+
+Do not permanently trust:
+
+vipStatus = ACTIVE
+
+if vipExpiresAt has already passed.
+
+==================================================
+VIP RENEWAL
+==================================================
+
+If an existing VIP user purchases another VIP:
+
+Admin-configured renewal mode:
+
+EXTEND
+or
+REPLACE
+
+EXTEND example:
+
+Current expiry:
+2026-10-24
+
+New purchase:
+30 Days
+
+New expiry:
+2026-11-23
+
+REPLACE example:
+
+Current VIP:
+Premium
+
+New VIP:
+Pro
+
+New expiry is calculated from the new activation time.
+
+Never accidentally give double duration.
+
+==================================================
+VIP UI
+==================================================
+
+Each plan card must show:
+
+PLAN NAME
+
+$PRICE
+
+DURATION
+
+Example:
+
+PREMIUM
+$3
+30 DAYS
+
+✓ AI Prediction
+✓ Advanced Analytics
+✓ VIP Badge
+
+[ BUY VIP ]
+
+==================================================
+ADMIN UI
+==================================================
+
+Admin → VIP → Plans
+
+Fields:
+
+Plan Name
+Price USD
+Duration Days
+AI Prediction
+Daily Prediction Limit
+Benefits
+Enabled
+Sort Order
+
+Example:
+
+Plan:
+Premium
+
+Price:
+3
+
+Duration:
+30
+
+AI Prediction:
+ON
+
+Daily Prediction:
+10
+
+Status:
+ENABLED
+
+[ SAVE ]
+
+==================================================
+FINAL RULE
+==================================================
+
+VIP activation must always use:
+
+payment verification
++
+server timestamp
++
+Admin-configured durationDays
+
+Never hardcode VIP duration inside frontend code.

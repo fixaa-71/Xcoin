@@ -1,0 +1,8 @@
+{
+  "name": "Remix Remix X COIN Telegram Mini App",
+  "description": "Production-ready X COIN Telegram Mini App featuring mining taps, upgrades, binary trading arena, X Crash provably-fair game, VIP memberships with AI market prediction, wallet and withdrawals, and complete owner administration.",
+  "requestFramePermissions": [],
+  "majorCapabilities": [
+    "MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"
+  ]
+}
